@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sy:switchyard xmlns:_1="urn:switchyard-config:transform:1.1" xmlns:bean="urn:switchyard-component-bean:config:1.1" xmlns:camel="urn:switchyard-component-camel-core:config:1.1" xmlns:camel_1="urn:switchyard-component-camel:config:1.1" xmlns:file="urn:switchyard-component-camel-file:config:1.1" xmlns:jpa="urn:switchyard-component-camel-jpa:config:1.1" xmlns:mail="urn:switchyard-component-camel-mail:config:1.1" xmlns:rules="urn:switchyard-component-rules:config:1.1" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" xmlns:soap="urn:switchyard-component-soap:config:1.1" xmlns:sy="urn:switchyard-config:switchyard:1.1" xmlns="urn:switchyard-config:switchyard:1.1" name="switchyard-angrytweet-service" targetNamespace="urn:org.jboss.fsw.demo:switchyard-angrytweet-service:1.0">
+  <sca:composite name="switchyard-angrytweet-service" targetNamespace="urn:org.jboss.fsw.demo:switchyard-angrytweet-service:1.0">
+    <sca:service name="TwitterStatusPollingService" promote="TicketEnricher/TicketEnricher">
+      <sy:interface.esb inputType="java:twitter4j.Status"/>
+      <camel:binding.uri name="cameltwitter" configURI="twitter://timeline/mentions?type=polling&amp;delay=90&amp;useSSL=true&amp;consumerKey=${consumerKey}&amp;consumerSecret=${consumerSecret}&amp;accessToken=${accessToken}&amp;accessTokenSecret=${accessTokenSecret}&amp;sinceId=${sinceId}"/>
+    </sca:service>
+    <sca:service name="TicketService" promote="TicketEnricher/TicketEnricher">
+      <sca:interface.wsdl interface="wsdl/TicketService.wsdl#wsdl.porttype(TicketService)"/>
+      <soap:binding.soap name="soap1">
+        <soap:wsdl>wsdl/TicketService.wsdl</soap:wsdl>
+        <soap:socketAddr>:18001</soap:socketAddr>
+        <soap:contextPath>ticketservice</soap:contextPath>
+      </soap:binding.soap>
+    </sca:service>
+    <sca:service name="CsvFilePollingService" promote="CsvProcessor/CsvProcessor">
+      <sy:interface.esb inputType="java.lang.String"/>
+      <file:binding.file name="file1">
+        <file:directory>${csvInputDir}</file:directory>
+        <file:consume/>
+      </file:binding.file>
+    </sca:service>
+    <sca:reference name="CrmService" multiplicity="0..1" promote="TicketEnricher/CrmService">
+      <sca:interface.wsdl interface="wsdl/crm.wsdl#wsdl.porttype(AccountPortType)"/>
+      <soap:binding.soap name="soap1">
+        <soap:wsdl>wsdl/crm.wsdl</soap:wsdl>
+        <soap:endpointAddress>http://localhost:8080/crm-service/accountservice</soap:endpointAddress>
+      </soap:binding.soap>
+    </sca:reference>
+    <sca:component name="TicketEnricher">
+      <bean:implementation.bean class="org.jboss.demo.fsw.angrytweet.service.TicketEnricherBean"/>
+      <sca:service name="TicketEnricher">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.TicketEnricher"/>
+      </sca:service>
+      <sca:reference name="CrmService">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.CrmService"/>
+      </sca:reference>
+      <sca:reference name="StoreService">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.StoreService"/>
+      </sca:reference>
+      <sca:reference name="ChannelOutService">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.ChannelOutService"/>
+      </sca:reference>
+      <sca:reference name="RouterService">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.RouterService"/>
+      </sca:reference>
+    </sca:component>
+    <sca:component name="CsvProcessor">
+      <camel_1:implementation.camel>
+        <camel_1:xml path="META-INF/route.xml"/>
+      </camel_1:implementation.camel>
+      <sca:service name="CsvProcessor">
+        <sy:interface.esb inputType="java.lang.String"/>
+      </sca:service>
+      <sca:reference name="TicketEnricher">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.TicketEnricher"/>
+      </sca:reference>
+    </sca:component>
+    <sca:reference name="StoreService" multiplicity="0..1" promote="TicketEnricher/StoreService">
+      <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.StoreService"/>
+      <jpa:binding.jpa name="jpa1">
+        <jpa:entityClassName>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket</jpa:entityClassName>
+        <jpa:persistenceUnit>JpaAngryTweet</jpa:persistenceUnit>
+        <jpa:transactionManager>#jtaTransactionManager</jpa:transactionManager>
+        <jpa:produce/>
+      </jpa:binding.jpa>
+    </sca:reference>
+    <sca:component name="ChannelOutService">
+      <rules:implementation.rules>
+        <rules:manifest>
+          <rules:resources>
+            <rules:resource location="rules/ChannelOut.drl" type="DRL"/>
+          </rules:resources>
+        </rules:manifest>
+        <rules:operations>
+          <rules:operation name="determineChannelOut" type="EXECUTE">
+            <rules:inputs>
+              <rules:input from="message.content"/>
+            </rules:inputs>
+          </rules:operation>
+        </rules:operations>
+      </rules:implementation.rules>
+      <sca:service name="ChannelOutService">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.ChannelOutService"/>
+      </sca:service>
+    </sca:component>
+    <sca:component name="CamelRouterService">
+      <camel_1:implementation.camel>
+        <camel_1:java class="org.jboss.demo.fsw.angrytweet.service.CamelRouterService"/>
+      </camel_1:implementation.camel>
+      <sca:service name="RouterService">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.RouterService"/>
+      </sca:service>
+      <sca:reference name="EmailService">
+        <sy:interface.esb inputType="java.lang.String" outputType="java.lang.String"/>
+      </sca:reference>
+      <sca:reference name="TwitterUpdateStatusService">
+        <sy:interface.esb inputType="java.lang.String" outputType="java.lang.String"/>
+      </sca:reference>
+    </sca:component>
+    <sca:reference name="EmailService" multiplicity="0..1" promote="CamelRouterService/EmailService">
+      <sy:interface.esb inputType="java.lang.String" outputType="java.lang.String"/>
+      <camel:binding.uri name="camel1" configURI="${email.server.host}?username=${email.server.username}&amp;password=${email.server.password}">
+        <camel:messageComposer class="org.jboss.demo.fsw.angrytweet.service.MailCamelMessageComposer"/>
+      </camel:binding.uri>
+    </sca:reference>
+    <sca:reference name="TwitterUpdateStatusService" multiplicity="0..1" promote="CamelRouterService/TwitterUpdateStatusService">
+      <sy:interface.esb inputType="java.lang.String" outputType="java.lang.String"/>
+      <camel:binding.uri name="camel1" configURI="twitter://timeline/user?useSSL=true&amp;consumerKey=${consumerKey}&amp;consumerSecret=${consumerSecret}&amp;accessToken=${accessToken}&amp;accessTokenSecret=${accessTokenSecret}"/>
+    </sca:reference>
+  </sca:composite>
+  <sy:transforms>
+    <_1:transform.java from="{urn:switchyard-services:ticketservice:1.0}submitTicket" to="java:org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket" bean="TicketTransformer"/>
+    <_1:transform.java from="java:twitter4j.Status" to="java:org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket" bean="TwitterTransformer"/>
+    <_1:transform.java from="java:org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfo" to="{urn:crm:account-service:1.0}getAccountInfo" class="org.jboss.demo.fsw.angytweet.transform.CrmTransformer"/>
+    <_1:transform.java from="{urn:crm:account-service:1.0}getAccountInfoResponse" to="java:org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfoResponse" class="org.jboss.demo.fsw.angytweet.transform.CrmTransformer"/>
+  </sy:transforms>
+  <sy:domain>
+    <sy:properties/>
+  </sy:domain>
+</sy:switchyard>

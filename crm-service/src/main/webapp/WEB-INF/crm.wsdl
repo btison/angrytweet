@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions targetNamespace="urn:crm:account-service:1.0"
+  xmlns="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns:tns="urn:crm:account-service:1.0"
+  xmlns:accounttns="urn:crm:account:1.0" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  
+  <types>
+    <xsd:schema targetNamespace="urn:crm:account-service:1.0">
+      <xsd:import schemaLocation="crm.xsd" 
+                  namespace="urn:crm:account:1.0" />
+      <xsd:element name="getAccountInfo" type="tns:getAccountInfo" />
+      <xsd:complexType name="getAccountInfo">
+        <xsd:sequence>
+          <xsd:element name="account" type="accounttns:Account" minOccurs="1" maxOccurs="1"></xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getAccountInfoResponse" type="tns:getAccountInfoResponse" />
+      <xsd:complexType name="getAccountInfoResponse">
+        <xsd:sequence>
+          <xsd:element name="result" type="xsd:boolean" />
+          <xsd:element name="reason" type="xsd:string" />
+          <xsd:element name="account" type="accounttns:Account" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence> 
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  
+  <message name="getAccountInfo">
+    <part name="parameters" element="tns:getAccountInfo" />
+  </message>
+  <message name="getAccountInfoResponse">
+    <part name="parameters" element="tns:getAccountInfoResponse" />
+  </message>
+  
+  <portType name="AccountPortType">
+    <operation name="getAccountInfo">
+      <input message="tns:getAccountInfo"></input>
+      <output message="tns:getAccountInfoResponse"></output>
+    </operation>
+  </portType>
+  
+  <binding name="AccountBinding" type="tns:AccountPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="getAccountInfo">
+      <soap:operation soapAction="urn:crm:account-service:1.0:getAccountInfo"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+    </operation>
+  </binding>
+  
+  <service name="AccountService">
+    <port name="AccountServicePort" binding="tns:AccountBinding">
+      <soap:address location="http://127.0.0.1:8080/crm/AccountService"/>
+    </port>
+  </service>
+  
+</definitions>

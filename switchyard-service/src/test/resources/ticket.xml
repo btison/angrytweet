@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<submitTicket xmlns="urn:switchyard-services:ticketservice:1.0">
+  <customer>
+    <customerCode>code</customerCode>
+    <areaCode>area</areaCode>
+  </customer>
+  <service>
+    <serviceName>tel</serviceName>
+    <problemDescription>problem</problemDescription>
+    <urgent>1</urgent>
+  </service>
+</submitTicket>

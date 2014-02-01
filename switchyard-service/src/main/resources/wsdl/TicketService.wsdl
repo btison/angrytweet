@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions targetNamespace="urn:switchyard-services:ticketservice:1.0"
+  xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:switchyard-services:ticketservice:1.0"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="TicketTypes.xsd" 
+                  namespace="urn:switchyard-services:ticketservice:1.0" />
+    </xsd:schema>
+  </types>
+  
+  <message name="submitTicket">
+    <part name="parameters" element="tns:submitTicket" />
+  </message>
+  
+  <portType name="TicketService">
+    <operation name="submitTicket">
+      <input message="tns:submitTicket"></input>
+    </operation>
+  </portType>
+  
+  <binding name="TicketServiceBinding" type="tns:TicketService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="submitTicket">
+      <soap:operation soapAction="urn:switchyard-services:ticketservice:1.0"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+    </operation>
+  </binding>
+  
+  <service name="TicketService">
+    <port name="TicketServicePort" binding="tns:TicketServiceBinding">
+      <soap:address location="http://127.0.0.1:8080/ticketservice/TicketServiceWS"/>
+    </port>
+  </service>
+  
+</definitions>

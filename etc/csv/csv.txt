@@ -1,0 +1,1 @@
+'1234567890';'2014.01.21 12:08:56 CET';'JohnDoe';'cable';'service down';1

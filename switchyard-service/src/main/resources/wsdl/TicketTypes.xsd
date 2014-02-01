@@ -1,0 +1,33 @@
+<xs:schema
+  targetNamespace="urn:switchyard-services:ticketservice:1.0"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="urn:switchyard-services:ticketservice:1.0">
+  <xs:element name="submitTicket" type="tns:submitTicketType" />
+  <xs:complexType name="submitTicketType">
+    <xs:sequence>
+      <xs:element name="customer" type="tns:customerType" />
+      <xs:element name="service" type="tns:serviceType" />      
+    </xs:sequence>
+  </xs:complexType> 
+  <xs:complexType name="customerType">
+    <xs:sequence>
+      <xs:element name="customerCode" type="xs:string" />
+      <xs:element name="areaCode" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceType">
+    <xs:sequence>
+      <xs:element name="serviceName" type="tns:serviceNameType" />
+      <xs:element name="problemDescription" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="urgent" type="xs:int" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="serviceNameType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="internet" />
+      <xs:enumeration value="cable" />
+      <xs:enumeration value="tel" />
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="AngryTweetWS" resourceRoot="" soapui-version="4.6.3" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="TicketServiceBinding" type="wsdl" bindingName="{urn:switchyard-services:ticketservice:1.0}TicketServiceBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ticketservice/TicketService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ticketservice/TicketService?wsdl"><con:part><con:url>http://localhost:8080/ticketservice/TicketService?wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="urn:switchyard-services:ticketservice:1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:switchyard-services:ticketservice:1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="urn:switchyard-services:ticketservice:1.0" schemaLocation="http://localhost:8080/ticketservice/TicketService?xsd=TicketTypes.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="submitTicket">
+    <part element="tns:submitTicket" name="parameters"></part>
+  </message>
+  <portType name="TicketService">
+    <operation name="submitTicket">
+      <input message="tns:submitTicket"></input>
+    </operation>
+  </portType>
+  <binding name="TicketServiceBinding" type="tns:TicketService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="submitTicket">
+      <soap:operation soapAction="urn:switchyard-services:ticketservice:1.0"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+    </operation>
+  </binding>
+  <service name="TicketService">
+    <port binding="tns:TicketServiceBinding" name="TicketServicePort">
+      <soap:address location="http://localhost:8080/ticketservice/TicketService"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/ticketservice/TicketService?xsd=TicketTypes.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="urn:switchyard-services:ticketservice:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:switchyard-services:ticketservice:1.0">
+  <xs:element name="submitTicket" type="tns:submitTicketType"/>
+  <xs:complexType name="submitTicketType">
+    <xs:sequence>
+      <xs:element name="customer" type="tns:customerType"/>
+      <xs:element name="service" type="tns:serviceType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customerType">
+    <xs:sequence>
+      <xs:element name="customerCode" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="areaCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceType">
+    <xs:sequence>
+      <xs:element name="serviceName" type="tns:serviceNameType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="problemDescription" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="urgent" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="serviceNameType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="internet"/>
+      <xs:enumeration value="cable"/>
+      <xs:enumeration value="tel"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ticketservice/TicketService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="urn:switchyard-services:ticketservice:1.0" name="submitTicket" bindingOperationName="submitTicket" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ticketservice/TicketService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:switchyard-services:ticketservice:1.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:submitTicket>
+         <customer>
+            <customerCode>BernardTison</customerCode>
+         </customer>
+         <service>
+            <serviceName>tel</serviceName>
+            <problemDescription>service down</problemDescription>
+            <urgent>1</urgent>
+         </service>
+      </urn:submitTicket>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:switchyard-services:ticketservice:1.0"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

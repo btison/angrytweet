@@ -1,0 +1,11 @@
+<module xmlns="urn:jboss:module:1.0" name="org.twitter4j">
+
+    <resources>
+        <resource-root path="twitter4j-core-3.0.5.jar"/>
+        <resource-root path="twitter4j-stream-3.0.5.jar"/>
+    </resources>
+
+    <dependencies>
+       <module name="javax.api" />
+    </dependencies>
+</module>

@@ -1,0 +1,30 @@
+<xs:schema
+  targetNamespace="urn:crm:account:1.0"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="urn:crm:account:1.0">
+  <xs:element name="Account" type="tns:Account" />
+  <xs:complexType name="Account">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0" />
+      <xs:element name="contactInfo" minOccurs="0" type="tns:ContactInfo" />
+    </xs:sequence>
+  </xs:complexType> 
+  <xs:complexType name="ContactInfo">
+    <xs:sequence>
+      <xs:element name="address1" minOccurs="0" type="xs:string" />
+      <xs:element name="address2" minOccurs="0" type="xs:string" />
+      <xs:element name="address3" minOccurs="0" type="xs:string" />
+      <xs:element name="city" minOccurs="0" type="xs:string" />
+      <xs:element name="contactNumber" minOccurs="0" type="xs:string" />
+      <xs:element name="country" minOccurs="0" type="xs:string" />
+      <xs:element name="emailAddress" minOccurs="0" type="xs:string" />
+      <xs:element name="firstName" minOccurs="0" type="xs:string" />
+      <xs:element name="initials" minOccurs="0" type="xs:string" />
+      <xs:element name="lastName" minOccurs="0" type="xs:string" />
+      <xs:element name="postalCode" minOccurs="0" type="xs:string" />
+      <xs:element name="province" minOccurs="0" type="xs:string" />
+      <xs:element name="title" minOccurs="0" type="xs:string" />
+      <xs:element name="twitterId" minOccurs="0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

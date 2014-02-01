@@ -1,0 +1,30 @@
+package org.jboss.demo.fsw.angrytweet.rules
+
+import org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket;
+
+rule "Twitter"
+
+  when
+      $ticket : ProviderServiceTicket( channelIn == "Twitter" )
+  then
+      $ticket.setChannelOut("Twitter");
+      
+end
+
+rule "Portal"
+
+  when
+      $ticket : ProviderServiceTicket( channelIn == "Portal" )
+  then
+      $ticket.setChannelOut("Email");
+      
+end
+
+rule "Helpdesk"
+
+  when
+      $ticket : ProviderServiceTicket( channelIn == "Helpdesk" )
+  then
+      $ticket.setChannelOut("Email");
+      
+end
