@@ -108,6 +108,12 @@
       <artifactId>switchyard-component-camel-mail</artifactId>
       <version>${switchyard.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-test</artifactId>
+      <version>${jbpm-version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>
