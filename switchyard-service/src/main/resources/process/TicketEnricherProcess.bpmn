@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="Definition" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="_ItemDefinition_3" structureRef="org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_541" structureRef="org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfo"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_543" structureRef="org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfoResponse"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_545" structureRef="org.jboss.demo.fsw.angrytweet.crm.model.Account"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_547" structureRef="org.jboss.demo.fsw.angrytweet.crm.model.ContactInfo"/>
+  <bpmn2:itemDefinition id="ItemDefinition_1" structureRef="String"/>
+  <bpmn2:process id="org.jboss.demo.fsw.angrytweet.service.TicketEnricher" tns:version="1" tns:packageName="org.jboss.demo.fsw.angrytweet.service" tns:adHoc="false" name="TicketEnricher" isExecutable="true" processType="Private">
+    <bpmn2:extensionElements>
+      <tns:import name="java.lang.Object"/>
+      <tns:import name="org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket"/>
+      <tns:import name="org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfo"/>
+      <tns:import name="org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfoResponse"/>
+      <tns:import name="org.jboss.demo.fsw.angrytweet.crm.model.Account"/>
+      <tns:import name="org.jboss.demo.fsw.angrytweet.crm.model.ContactInfo"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="Parameter" itemSubjectRef="_ItemDefinition_3"/>
+    <bpmn2:property id="GetAccountInfo" itemSubjectRef="_ItemDefinition_541"/>
+    <bpmn2:property id="GetAccountInfoResponse" itemSubjectRef="_ItemDefinition_543"/>
+    <bpmn2:task id="Task_2" tns:taskName="SwitchYard Service Task" tns:icon="org.switchyard.tools.ui.editor.SwitchYard.16" name="StoreService">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_9</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_InputOutputSpecification_3">
+        <bpmn2:dataInput id="_DataInput_9" itemSubjectRef="ItemDefinition_1" name="ServiceName"/>
+        <bpmn2:dataInput id="_DataInput_10" itemSubjectRef="ItemDefinition_1" name="OperationName"/>
+        <bpmn2:dataInput id="_DataInput_11" itemSubjectRef="ItemDefinition_1" name="ParameterName"/>
+        <bpmn2:dataInput id="_DataInput_12" itemSubjectRef="ItemDefinition_1" name="ResultName"/>
+        <bpmn2:dataInput id="_DataInput_13" itemSubjectRef="ItemDefinition_1" name="FaultName"/>
+        <bpmn2:dataInput id="_DataInput_14" itemSubjectRef="ItemDefinition_1" name="FaultEventId"/>
+        <bpmn2:dataInput id="_DataInput_15" itemSubjectRef="ItemDefinition_1" name="FaultAction"/>
+        <bpmn2:dataInput id="DataInput_2" itemSubjectRef="_ItemDefinition_3" name="Parameter"/>
+        <bpmn2:inputSet id="_InputSet_3" name="New Input Set">
+          <bpmn2:dataInputRefs>_DataInput_9</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_10</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_11</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_12</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_13</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_14</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_15</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_2</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_2" name="Output Set 2"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_9">
+        <bpmn2:targetRef>_DataInput_9</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_14">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_28" language="http://www.mvel.org/2.0">StoreService</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_27" language="http://www.mvel.org/2.0">_DataInput_9</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_10">
+        <bpmn2:targetRef>_DataInput_10</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_11">
+        <bpmn2:targetRef>_DataInput_11</bpmn2:targetRef>
+        <bpmn2:assignment id="_Assignment_4">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_7" language="http://www.mvel.org/2.0">Parameter</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_6" language="http://www.mvel.org/2.0">_DataInput_11</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_12">
+        <bpmn2:targetRef>_DataInput_12</bpmn2:targetRef>
+        <bpmn2:assignment id="_Assignment_5">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_9" language="http://www.mvel.org/2.0">Result</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_8" language="http://www.mvel.org/2.0">_DataInput_12</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_13">
+        <bpmn2:targetRef>_DataInput_13</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_14">
+        <bpmn2:targetRef>_DataInput_14</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_15">
+        <bpmn2:targetRef>_DataInput_15</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_2">
+        <bpmn2:sourceRef>Parameter</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_2</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="SequenceFlow_9" tns:priority="1" name="" sourceRef="Task_2" targetRef="Task_3"/>
+    <bpmn2:scriptTask id="ScriptTask_1" name="Prepare Data" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+      <bpmn2:script>ProviderServiceTicket ticket = (ProviderServiceTicket)kcontext.getVariable(&quot;Parameter&quot;);       
+
+GetAccountInfo getAccountInfo = new GetAccountInfo();
+Account account = new Account();
+getAccountInfo.setAccount(account);
+if (ticket.getExtId().startsWith(&quot;H&quot;) || ticket.getExtId().startsWith(&quot;P&quot;)) {
+  account.setCode(ticket.getRequester());
+}
+if (ticket.getExtId().startsWith(&quot;T&quot;)) {
+  ContactInfo info = new ContactInfo();
+  account.setContactInfo(info);
+  info.setTwitterId(ticket.getRequester());
+}
+kcontext.setVariable(&quot;GetAccountInfo&quot;, getAccountInfo);        
+ </bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" tns:priority="1" name="" sourceRef="ScriptTask_1" targetRef="Task_1"/>
+    <bpmn2:startEvent id="StartEvent_1" name="">
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" tns:priority="1" name="" sourceRef="StartEvent_1" targetRef="ScriptTask_1"/>
+    <bpmn2:scriptTask id="ScriptTask_2" name="Process Data" scriptFormat="http://www.java.com/java">
+      <bpmn2:documentation id="Documentation_17"> GetAccountInfoResponse response = (GetAccountInfoResponse)kcontext.getVariable(&quot;GetAccountInfoResponse&quot;);
+if (response.isResult()) {
+    
+    Account accountResponse = response.getAccounts().get(0);
+    ticket.setAreaCode(accountResponse.getContactInfo().getPostalCode());
+    ticket.setCustomer(accountResponse.getCode());
+    ticket.setEmail(accountResponse.getContactInfo().getEmailAddress());
+}
+
+        log.info(&quot;Ticket after enrichment = &quot; + ticket.toString());</bpmn2:documentation>
+      <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
+      <bpmn2:script>ProviderServiceTicket ticket = (ProviderServiceTicket)kcontext.getVariable(&quot;Parameter&quot;);      
+GetAccountInfoResponse response = (GetAccountInfoResponse)kcontext.getVariable(&quot;GetAccountInfoResponse&quot;);
+
+if (response.isResult()) {
+    Account accountResponse = response.getAccounts().get(0);
+    ticket.setAreaCode(accountResponse.getContactInfo().getPostalCode());
+    ticket.setCustomer(accountResponse.getCode());
+    ticket.setEmail(accountResponse.getContactInfo().getEmailAddress());
+}
+
+System.out.println(&quot;Ticket after enrichment = &quot; + ticket.toString());</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_7" tns:priority="1" name="" sourceRef="ScriptTask_2" targetRef="Task_2"/>
+    <bpmn2:task id="Task_1" tns:taskName="SwitchYard Service Task" tns:icon="org.switchyard.tools.ui.editor.SwitchYard.16" name="CrmService">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_InputOutputSpecification_2">
+        <bpmn2:dataInput id="_DataInput_2" itemSubjectRef="ItemDefinition_1" name="ServiceName"/>
+        <bpmn2:dataInput id="_DataInput_3" itemSubjectRef="ItemDefinition_1" name="OperationName"/>
+        <bpmn2:dataInput id="_DataInput_4" itemSubjectRef="ItemDefinition_1" name="ParameterName"/>
+        <bpmn2:dataInput id="_DataInput_5" itemSubjectRef="ItemDefinition_1" name="ResultName"/>
+        <bpmn2:dataInput id="_DataInput_6" itemSubjectRef="ItemDefinition_1" name="FaultName"/>
+        <bpmn2:dataInput id="_DataInput_7" itemSubjectRef="ItemDefinition_1" name="FaultEventId"/>
+        <bpmn2:dataInput id="_DataInput_8" itemSubjectRef="ItemDefinition_1" name="FaultAction"/>
+        <bpmn2:dataInput id="DataInput_1" itemSubjectRef="_ItemDefinition_541" name="Parameter"/>
+        <bpmn2:dataOutput id="DataOutput_1" itemSubjectRef="_ItemDefinition_543" name="Result"/>
+        <bpmn2:inputSet id="_InputSet_2" name="New Input Set">
+          <bpmn2:dataInputRefs>_DataInput_2</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_3</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_4</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_5</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_6</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_7</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_8</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_1</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_1" name="Output Set 1">
+          <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_2">
+        <bpmn2:targetRef>_DataInput_2</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_1">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_2" language="http://www.mvel.org/2.0">CrmService</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1" language="http://www.mvel.org/2.0">_DataInput_2</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_3">
+        <bpmn2:targetRef>_DataInput_3</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_4">
+        <bpmn2:targetRef>_DataInput_4</bpmn2:targetRef>
+        <bpmn2:assignment id="_Assignment_2">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_3" language="http://www.mvel.org/2.0">Parameter</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_2" language="http://www.mvel.org/2.0">_DataInput_4</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_5">
+        <bpmn2:targetRef>_DataInput_5</bpmn2:targetRef>
+        <bpmn2:assignment id="_Assignment_3">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_5" language="http://www.mvel.org/2.0">Result</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_4" language="http://www.mvel.org/2.0">_DataInput_5</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_6">
+        <bpmn2:targetRef>_DataInput_6</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_7">
+        <bpmn2:targetRef>_DataInput_7</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_8">
+        <bpmn2:targetRef>_DataInput_8</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
+        <bpmn2:sourceRef>GetAccountInfo</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_1</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_1</bpmn2:sourceRef>
+        <bpmn2:targetRef>GetAccountInfoResponse</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="SequenceFlow_5" tns:priority="1" name="" sourceRef="Task_1" targetRef="ScriptTask_2"/>
+    <bpmn2:task id="Task_3" tns:taskName="SwitchYard Service Task" tns:icon="org.switchyard.tools.ui.editor.SwitchYard.16" name="ChannelOutService">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script>ProviderServiceTicket ticket = (ProviderServiceTicket)kcontext.getVariable(&quot;Parameter&quot;);  
+System.out.println(&quot;Ticket after channelOut rules = &quot; + ticket.toString());</tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_9</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_InputOutputSpecification_4">
+        <bpmn2:dataInput id="_DataInput_16" itemSubjectRef="ItemDefinition_1" name="ServiceName"/>
+        <bpmn2:dataInput id="_DataInput_17" itemSubjectRef="ItemDefinition_1" name="OperationName"/>
+        <bpmn2:dataInput id="_DataInput_18" itemSubjectRef="ItemDefinition_1" name="ParameterName"/>
+        <bpmn2:dataInput id="_DataInput_19" itemSubjectRef="ItemDefinition_1" name="ResultName"/>
+        <bpmn2:dataInput id="_DataInput_20" itemSubjectRef="ItemDefinition_1" name="FaultName"/>
+        <bpmn2:dataInput id="_DataInput_21" itemSubjectRef="ItemDefinition_1" name="FaultEventId"/>
+        <bpmn2:dataInput id="_DataInput_22" itemSubjectRef="ItemDefinition_1" name="FaultAction"/>
+        <bpmn2:dataInput id="DataInput_3" itemSubjectRef="_ItemDefinition_3" name="Parameter"/>
+        <bpmn2:inputSet id="_InputSet_4" name="New Input Set">
+          <bpmn2:dataInputRefs>_DataInput_16</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_17</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_18</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_19</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_20</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_21</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_22</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_3</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_3" name="Output Set 3"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_16">
+        <bpmn2:targetRef>_DataInput_16</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_19">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_38" language="http://www.mvel.org/2.0">ChannelOutService</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_37" language="http://www.mvel.org/2.0">_DataInput_16</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_17">
+        <bpmn2:targetRef>_DataInput_17</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_18">
+        <bpmn2:targetRef>_DataInput_18</bpmn2:targetRef>
+        <bpmn2:assignment id="_Assignment_6">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_11" language="http://www.mvel.org/2.0">Parameter</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_10" language="http://www.mvel.org/2.0">_DataInput_18</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_19">
+        <bpmn2:targetRef>_DataInput_19</bpmn2:targetRef>
+        <bpmn2:assignment id="_Assignment_7">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_13" language="http://www.mvel.org/2.0">Result</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_12" language="http://www.mvel.org/2.0">_DataInput_19</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_20">
+        <bpmn2:targetRef>_DataInput_20</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_21">
+        <bpmn2:targetRef>_DataInput_21</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_22">
+        <bpmn2:targetRef>_DataInput_22</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_3">
+        <bpmn2:sourceRef>Parameter</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_3</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:task>
+    <bpmn2:endEvent id="EndEvent_1" name="">
+      <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" sourceRef="Task_3" targetRef="Task_4"/>
+    <bpmn2:task id="Task_4" tns:taskName="SwitchYard Service Task" tns:icon="org.switchyard.tools.ui.editor.SwitchYard.16" name="RouterService">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_InputOutputSpecification_5">
+        <bpmn2:dataInput id="_DataInput_23" itemSubjectRef="ItemDefinition_1" name="ServiceName"/>
+        <bpmn2:dataInput id="_DataInput_24" itemSubjectRef="ItemDefinition_1" name="OperationName"/>
+        <bpmn2:dataInput id="_DataInput_25" itemSubjectRef="ItemDefinition_1" name="ParameterName"/>
+        <bpmn2:dataInput id="_DataInput_26" itemSubjectRef="ItemDefinition_1" name="ResultName"/>
+        <bpmn2:dataInput id="_DataInput_27" itemSubjectRef="ItemDefinition_1" name="FaultName"/>
+        <bpmn2:dataInput id="_DataInput_28" itemSubjectRef="ItemDefinition_1" name="FaultEventId"/>
+        <bpmn2:dataInput id="_DataInput_29" itemSubjectRef="ItemDefinition_1" name="FaultAction"/>
+        <bpmn2:dataInput id="DataInput_4" itemSubjectRef="_ItemDefinition_3" name="Parameter"/>
+        <bpmn2:inputSet id="_InputSet_5" name="New Input Set">
+          <bpmn2:dataInputRefs>_DataInput_23</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_24</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_25</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_26</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_27</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_28</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_29</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_4</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_4" name="Output Set 4"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_23">
+        <bpmn2:targetRef>_DataInput_23</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_27">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_54" language="http://www.mvel.org/2.0">RouterService</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_53" language="http://www.mvel.org/2.0">_DataInput_23</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_24">
+        <bpmn2:targetRef>_DataInput_24</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_25">
+        <bpmn2:targetRef>_DataInput_25</bpmn2:targetRef>
+        <bpmn2:assignment id="_Assignment_8">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_15" language="http://www.mvel.org/2.0">Parameter</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_14" language="http://www.mvel.org/2.0">_DataInput_25</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_26">
+        <bpmn2:targetRef>_DataInput_26</bpmn2:targetRef>
+        <bpmn2:assignment id="_Assignment_9">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_17" language="http://www.mvel.org/2.0">Result</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FormalExpression_16" language="http://www.mvel.org/2.0">_DataInput_26</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_27">
+        <bpmn2:targetRef>_DataInput_27</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_28">
+        <bpmn2:targetRef>_DataInput_28</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_29">
+        <bpmn2:targetRef>_DataInput_29</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_4">
+        <bpmn2:sourceRef>Parameter</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_4</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="SequenceFlow_4" tns:priority="1" name="" sourceRef="Task_4" targetRef="EndEvent_1"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="org.jboss.demo.fsw.angrytweet.service.TicketEnricher">
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="EndEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="1020.0" y="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="StartEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="50.0" y="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_2" bpmnElement="Task_2">
+        <dc:Bounds height="50.0" width="110.0" x="580.0" y="71.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="ScriptTask_1">
+        <dc:Bounds height="50.0" width="110.0" x="140.0" y="71.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_2" bpmnElement="ScriptTask_2">
+        <dc:Bounds height="50.0" width="110.0" x="440.0" y="71.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_1" bpmnElement="Task_1">
+        <dc:Bounds height="50.0" width="110.0" x="300.0" y="71.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_3" bpmnElement="Task_3">
+        <dc:Bounds height="50.0" width="110.0" x="740.0" y="71.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_4" bpmnElement="Task_4">
+        <dc:Bounds height="50.0" width="110.0" x="880.0" y="72.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_StartEvent_1" targetElement="BPMNShape_ScriptTask_1">
+        <di:waypoint xsi:type="dc:Point" x="86.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="110.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="110.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="140.0" y="96.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_ScriptTask_1" targetElement="BPMNShape_Task_1">
+        <di:waypoint xsi:type="dc:Point" x="250.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="272.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="272.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="300.0" y="96.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="BPMNShape_Task_1" targetElement="BPMNShape_ScriptTask_2">
+        <di:waypoint xsi:type="dc:Point" x="410.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="423.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="423.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="440.0" y="96.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_ScriptTask_2" targetElement="BPMNShape_Task_2">
+        <di:waypoint xsi:type="dc:Point" x="550.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="563.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="563.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="580.0" y="96.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="BPMNShape_Task_2" targetElement="BPMNShape_Task_3">
+        <di:waypoint xsi:type="dc:Point" x="690.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="712.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="712.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="740.0" y="96.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_Task_3" targetElement="BPMNShape_Task_4">
+        <di:waypoint xsi:type="dc:Point" x="850.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="863.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="863.0" y="97.0"/>
+        <di:waypoint xsi:type="dc:Point" x="880.0" y="97.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="BPMNShape_Task_4" targetElement="BPMNShape_EndEvent_1">
+        <di:waypoint xsi:type="dc:Point" x="990.0" y="97.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1003.0" y="97.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1003.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1020.0" y="96.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
