@@ -3,7 +3,7 @@
     <route>
         <from uri="switchyard://CsvProcessor"/>
         <split>
-            <tokenize token="\n"></tokenize>
+            <method bean="CsvSplitter" method="splitBody"></method>
             <process ref="CsvRecordProcessor"/>
             <to uri="switchyard://TicketEnricher"/>
         </split>
