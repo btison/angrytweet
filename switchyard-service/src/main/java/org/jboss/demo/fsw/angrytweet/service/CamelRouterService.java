@@ -12,7 +12,7 @@ public class CamelRouterService extends RouteBuilder {
            .log("Received message for 'RouterService' : ${body}")
            .choice()
                .when(simple("${body.channelOut} == \"Twitter\"")).to("direct:twitter")
-               .when(simple("${body.channelOut} == \"Email\"")).to("direct:email")
+               .when(simple("${body.channelOut} == \"Email\"")).to("seda:email")
            .end();
         
         from("direct:twitter")
@@ -20,7 +20,7 @@ public class CamelRouterService extends RouteBuilder {
             .setBody(simple(getTwitterBody()))
             .to("switchyard://TwitterUpdateStatusService");
         
-        from("direct:email")
+        from("seda:email")
             .log("transferring to email")
             .setHeader("Subject",constant("Thank you for your ticket"))
             .setHeader("To",simple("${body.email}"))
