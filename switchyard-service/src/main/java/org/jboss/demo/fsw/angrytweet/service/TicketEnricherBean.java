@@ -35,13 +35,12 @@ public class TicketEnricherBean implements TicketEnricher {
         GetAccountInfo getAccountInfo = new GetAccountInfo();
         Account account = new Account();
         getAccountInfo.setAccount(account);
-        if (ticket.getExtId().startsWith("H") || ticket.getExtId().startsWith("P")) {
-            account.setCode(ticket.getRequester());
-        }
         if (ticket.getExtId().startsWith("T")) {
             ContactInfo info = new ContactInfo();
             account.setContactInfo(info);
             info.setTwitterId(ticket.getRequester());
+        } else {
+            account.setCode(ticket.getRequester());
         }
         
         GetAccountInfoResponse response = crm.getAccountInfo(getAccountInfo);

@@ -28,3 +28,12 @@ rule "Helpdesk"
       $ticket.setChannelOut("Email");
       
 end
+
+rule "Mobile"
+
+  when
+      $ticket : ProviderServiceTicket( channelIn == "Mobile" )
+  then
+      $ticket.setChannelOut("Email");
+      
+end

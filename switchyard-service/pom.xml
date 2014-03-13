@@ -114,6 +114,16 @@
       <version>${jbpm-version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency> 
+      <groupId>org.jboss.as</groupId>
+      <artifactId>jboss-as-jaxrs</artifactId>
+      <version>7.2.1.Final-redhat-10</version>
+    </dependency>
+    <dependency>
+      <groupId>org.switchyard.components</groupId>
+      <artifactId>switchyard-component-resteasy</artifactId>
+      <version>${switchyard.version}</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>
