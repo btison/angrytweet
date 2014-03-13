@@ -97,15 +97,14 @@
 GetAccountInfo getAccountInfo = new GetAccountInfo();
 Account account = new Account();
 getAccountInfo.setAccount(account);
-if (ticket.getExtId().startsWith(&quot;H&quot;) || ticket.getExtId().startsWith(&quot;P&quot;)) {
-  account.setCode(ticket.getRequester());
-}
 if (ticket.getExtId().startsWith(&quot;T&quot;)) {
   ContactInfo info = new ContactInfo();
   account.setContactInfo(info);
   info.setTwitterId(ticket.getRequester());
+} else {
+  account.setCode(ticket.getRequester()); 
 }
-kcontext.setVariable(&quot;GetAccountInfo&quot;, getAccountInfo);        
+kcontext.setVariable(&quot;GetAccountInfo&quot;, getAccountInfo);       
  </bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_1" tns:priority="1" name="" sourceRef="ScriptTask_1" targetRef="Task_1"/>
@@ -291,7 +290,7 @@ System.out.println(&quot;Ticket after channelOut rules = &quot; + ticket.toStrin
     <bpmn2:endEvent id="EndEvent_1" name="">
       <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" sourceRef="Task_3" targetRef="Task_4"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" name="" sourceRef="Task_3" targetRef="Task_4"/>
     <bpmn2:task id="Task_4" tns:taskName="SwitchYard Service Task" tns:icon="org.switchyard.tools.ui.editor.SwitchYard.16" name="RouterService">
       <bpmn2:extensionElements>
         <tns:onEntry-script scriptFormat="http://www.java.com/java">
