@@ -1,0 +1,9 @@
+if [[ `mysql -u jboss -pjboss -ss -h localhost -e"select MAX(external_id) FROM angrytweet.ticket LIMIT 1;" 2>/dev/null` ]]; then
+		export tempAG_sinceId=`mysql -u jboss -pjboss -ss -h localhost -e"select MAX(external_id) FROM angrytweet.ticket LIMIT 1;"| sed s/^.//`
+		echo "table tickets disponible, since_id=" $tempAG_sinceId
+else
+		export tempAG_sinceId=1
+		echo "table tickets indisponible, since_id=" $tempAG_sinceId
+fi
+export AG_sinceId='"'$tempAG_sinceId'"'
+echo

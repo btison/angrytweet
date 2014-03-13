@@ -1,0 +1,16 @@
+this folder contains installation files to be downloaded separatly
+
+
+
+from Redhat downloads       
+
+        ==> jboss-fsw-installer-6.0.0.GA-redhat-4.jar 
+        ==> jboss-bpms-6.0.0.GA-redhat-1-deployable-eap6.x.zip
+        ==> jboss-eap-6.1.1.zip
+
+
+
+from search.maven.org 
+
+                 ==> twitter4j-core-3.0.5.jar
+                 ==> twitter4j-stream-3.0.5.jar
