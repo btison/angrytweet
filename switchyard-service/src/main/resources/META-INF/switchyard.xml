@@ -24,7 +24,7 @@
       <sca:interface.wsdl interface="wsdl/crm.wsdl#wsdl.porttype(AccountPortType)"/>
       <soap:binding.soap name="soap1">
         <soap:wsdl>wsdl/crm.wsdl</soap:wsdl>
-        <soap:endpointAddress>http://localhost:8080/crm-service/accountservice</soap:endpointAddress>
+        <soap:endpointAddress>http://${crm.host}:${crm.port}/crm-service/accountservice</soap:endpointAddress>
       </soap:binding.soap>
     </sca:reference>
     <sca:component name="CsvProcessor">

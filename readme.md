@@ -142,5 +142,7 @@ The FSW server needs to be started up with a number of system properties:
 * email.server.host : email server url (example smtps://smtp.gmail.com:465 for gmail)
 * email.server.username : email server user name
 * email.server.password : email server password (note: should not contain characters as ?,&,+ ...) 
+* crm.host : host name/ip address of the crm application
+* crm.port : port of the crm application
 
 
