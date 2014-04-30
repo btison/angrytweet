@@ -21,20 +21,20 @@ public class TwitterTransformer {
         ticket.setSubmitted(status.getCreatedAt());
         ticket.setComments(status.getText());
 
-            //service :take first hashtag from servicelist that is not #urgent
-            //urgent : set to 1 if hashtag #urgent is found
-            boolean found = false;
-            for (HashtagEntity hashTag : status.getHashtagEntities()) {
-                String test = hashTag.getText();
-                if ("urgent".equalsIgnoreCase(test)) {
-                    ticket.setUrgent(1);
-                } else {
-                    if (!found && ProviderServices.exists(test)) { 
-                        ticket.setService(hashTag.getText());
-                        found = true;
-                    }
+        //service :take first hashtag from servicelist that is not #urgent
+        //urgent : set to 1 if hashtag #urgent is found
+        boolean found = false;
+        for (HashtagEntity hashTag : status.getHashtagEntities()) {
+            String test = hashTag.getText();
+            if ("urgent".equalsIgnoreCase(test)) {
+                ticket.setUrgent(1);
+            } else {
+                if (!found && ProviderServices.exists(test)) { 
+                    ticket.setService(hashTag.getText());
+                    found = true;
                 }
             }
+        }
         if (ticket.getService() == null) {
             ticket.setService("N.A.");
         }

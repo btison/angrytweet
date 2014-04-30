@@ -1,0 +1,51 @@
+[{
+    "name" : "AngryTweetIP",
+    "version" : "1",
+    "typeProcessors" : {
+        "org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket" : {
+            "contexts" : [{
+                "type" : "Conversation",
+                "evaluator" : {
+                    "type" : "mvel",
+                    "expression" : "extId"
+                }    
+            }],
+            "properties" : [{
+                "name" : "customer",
+                "evaluator" : {
+                    "type" : "mvel",
+                    "expression" : "customer",
+                    "optional" : "true"
+                }
+            },{
+                "name" : "areaCode",
+                "evaluator" : {
+                    "type" : "mvel",
+                    "expression" : "areaCode",
+                    "optional" : "true"
+                }
+            },{
+                "name" : "submitted",
+                "evaluator" : {
+                    "type" : "mvel",
+                    "expression" : "submitted",
+                    "optional" : "false"
+                }            
+            },{
+                "name" : "channel",
+                "evaluator" : {
+                    "type" : "mvel",
+                    "expression" : "channelIn",
+                    "optional" : "true"
+                }                
+            },{
+                "name" : "ticketId",
+                "evaluator" : {
+                    "type" : "mvel",
+                    "expression" : "extId",
+                    "optional" : "false"
+                }            
+            }]
+        }
+    }
+}]

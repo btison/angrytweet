@@ -1,0 +1,42 @@
+{
+    "name" : "TicketEPN",
+    "version" : "1",
+    "subscriptions" : [{
+        "nodeName" : "RoutedTicket",
+        "subject" : "ActivityUnits"
+    }],
+    "nodes" : [
+        {
+            "name" : "RoutedTicket",
+            "sourceNodes" : [ ],
+            "destinationSubjects" : [ ],
+            "maxRetries" : 3,
+            "retryInterval" : 0,
+            "eventProcessor" : {
+                "@class" : "org.jboss.demo.fsw.angrytweet.rtgov.epn.situation.RoutedTicketEventGenerator"        
+            },
+            "predicate" : null,
+            "notifications" : []        
+        },{
+            "name" : "Alert",
+            "sourceNodes" : [ "RoutedTicket" ],
+            "destinationSubjects" : [ "Situations" ], 
+            "maxRetries" : 3,
+            "retryInterval" : 0,
+            "eventProcessor" : {
+                "@class" : "org.jboss.demo.fsw.angrytweet.rtgov.epn.situation.CEPDroolsEventProcessor",
+                "ruleName" : "RoutedTicketEvent"        
+            },
+            "predicate" : null,
+            "notifications" : [ 
+                {
+      	            "type" : "Processed",
+      	            "subject" : "SituationsProcessed"
+                },{
+      	            "type" : "Results",
+      	            "subject" : "Situations"
+                } 
+            ]            
+        }
+    ]
+}

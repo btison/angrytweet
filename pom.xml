@@ -8,6 +8,7 @@
   <properties>
   	<switchyard.version>1.1.1-p5-redhat-1</switchyard.version>
   	<jbpm-version>6.0.0-redhat-9</jbpm-version>
+    <rtgov.version>1.0.1.Final-redhat-4</rtgov.version>
   </properties>
   <build>
     <pluginManagement>
@@ -37,5 +38,7 @@
     <module>crm-service</module>
     <module>crm-model</module>
     <module>switchyard-ear</module>
+    <module>rtgov-ip</module>
+    <module>rtgov-epn-situation</module>
   </modules>
 </project>

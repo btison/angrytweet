@@ -1,0 +1,28 @@
+import org.jboss.demo.fsw.angrytweet.rtgov.epn.situation.RoutedTicketEvent;
+import org.jboss.demo.fsw.angrytweet.rtgov.epn.situation.SituationFactory;
+
+
+global org.overlord.rtgov.ep.EPContext epc
+
+declare RoutedTicketEvent
+    @role( event )
+    @timestamp( tstamp )
+end
+
+rule "Check for RoutedTicketEvents within 15 min window for the same customer using different channels"
+
+when
+	$event1 : RoutedTicketEvent() from entry-point "RoutedTicket" 
+	$event2 : RoutedTicketEvent( customer == $event1.customer, channel != $event1.channel, this after [0m, 15m] $event1) from entry-point "RoutedTicket" 
+then
+    epc.handle(SituationFactory.createSituation("CustomerAlert", $event1));
+end
+
+rule "Check for RoutedTicketEvents within 15 min window for the same area code"
+
+when
+	$event1 : RoutedTicketEvent() from entry-point "RoutedTicket" 
+	$event2 : RoutedTicketEvent( areaCode == $event1.areaCode, customer != $event1.customer, this after [0m, 15m] $event1 ) from entry-point "RoutedTicket" 
+then
+    epc.handle(SituationFactory.createSituation("ServiceAlert", $event1));
+end
