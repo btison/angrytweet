@@ -2,33 +2,64 @@ package org.jboss.demo.fsw.angrytweet.model;
 
 import java.util.Date;
 
-public class ProviderServiceTicket {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="ticket")
+@SequenceGenerator(name="ticketIdSeq", sequenceName="TICKET_INSTANCE_INFO_ID_SEQ")
+public class ProviderServiceTicketEntity {
     
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="ticketIdSeq")
+    private Long id;
+    
+    @Column(name="external_id")
     private String extId;
     
+    @Column(name="service")
     private String service;
     
+    @Column(name="requester")
     private String requester;
     
+    @Column(name="customer")
     private String customer;
     
+    @Column(name="area_code")
     private String areaCode;
     
+    @Column(name="comments")
     private String comments;
     
+    @Column(name="channel_in")
     private String channelIn;
     
+    @Column(name="submitted")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date submitted;
     
+    @Transient
     private String channelOut;
     
+    @Transient
     private String email;
     
+    @Column(name="urgent")
     private int urgent;
     
-    private boolean error = false;
-    
-    private String errorString;
+    public long getId() {
+        return id;
+    }
     
     public String getExtId() {
         return extId;
@@ -117,22 +148,6 @@ public class ProviderServiceTicket {
         this.email = email;
     }
 
-    public boolean isError() {
-        return error;
-    }
-
-    public void setError(boolean error) {
-        this.error = error;
-    }
-
-    public String getErrorString() {
-        return errorString;
-    }
-
-    public void setErrorString(String errorString) {
-        this.errorString = errorString;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -148,8 +163,6 @@ public class ProviderServiceTicket {
             .append("\", comments: \"").append(comments)
             .append("\", areacode: \"").append(areaCode)
             .append("\", email: \"").append(email).append("\"")
-            .append("\", error: \"").append(error).append("\"")
-            .append("\", errorString: \"").append(error ? errorString : "").append("\"")
             .append("}").toString();
     }
     

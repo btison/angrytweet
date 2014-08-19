@@ -7,7 +7,8 @@
    <persistence-unit name="JpaAngryTweet">
 
       <jta-data-source>java:jboss/datasources/AngryTweetDS</jta-data-source>
-      <class>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket</class>
+      <class>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketEntity</class>
+      <class>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketErrorEntity</class>
       <exclude-unlisted-classes>true</exclude-unlisted-classes>
       <properties>
          <!-- Properties for Hibernate -->

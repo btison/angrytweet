@@ -38,15 +38,6 @@
         <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.TicketEnricher"/>
       </sca:reference>
     </sca:component>
-    <sca:reference name="StoreService" multiplicity="0..1" promote="TicketEnricherProcess/StoreService">
-      <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.StoreService"/>
-      <jpa:binding.jpa name="jpa1">
-        <jpa:entityClassName>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket</jpa:entityClassName>
-        <jpa:persistenceUnit>JpaAngryTweet</jpa:persistenceUnit>
-        <jpa:transactionManager>#jtaTransactionManager</jpa:transactionManager>
-        <jpa:produce/>
-      </jpa:binding.jpa>
-    </sca:reference>
     <sca:component name="ChannelOutService">
       <rules:implementation.rules>
         <rules:manifest>
@@ -123,13 +114,36 @@
       <sca:service name="TicketEnricher">
         <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.TicketEnricher"/>
       </sca:service>
+      <sca:reference name="ErrorStoreService">
+        <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.StoreService"/>
+      </sca:reference>
     </sca:component>
+    <sca:reference name="StoreService" multiplicity="0..1" promote="TicketEnricherProcess/StoreService">
+      <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.JpaStoreService"/>
+      <jpa:binding.jpa name="jpa1">
+        <jpa:entityClassName>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketEntity</jpa:entityClassName>
+        <jpa:persistenceUnit>JpaAngryTweet</jpa:persistenceUnit>
+        <jpa:transactionManager>#jtaTransactionManager</jpa:transactionManager>
+        <jpa:produce/>
+      </jpa:binding.jpa>
+    </sca:reference>
+    <sca:reference name="ErrorStoreService" multiplicity="0..1" promote="TicketEnricherProcess/ErrorStoreService">
+      <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.JpaStoreErrorService"/>
+      <jpa:binding.jpa name="jpa1">
+        <jpa:entityClassName>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketErrorEntity</jpa:entityClassName>
+        <jpa:persistenceUnit>JpaAngryTweet</jpa:persistenceUnit>
+        <jpa:transactionManager>#jtaTransactionManager</jpa:transactionManager>
+        <jpa:produce/>
+      </jpa:binding.jpa>
+    </sca:reference>
   </sca:composite>
   <sy:transforms>
     <_1:transform.java from="{urn:switchyard-services:ticketservice:1.0}submitTicket" to="java:org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket" bean="TicketTransformer"/>
     <_1:transform.java from="java:twitter4j.Status" to="java:org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket" bean="TwitterTransformer"/>
-    <_1:transform.java from="java:org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfo" to="{urn:crm:account-service:1.0}getAccountInfo" class="org.jboss.demo.fsw.angytweet.transform.CrmTransformer"/>
-    <_1:transform.java from="{urn:crm:account-service:1.0}getAccountInfoResponse" to="java:org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfoResponse" class="org.jboss.demo.fsw.angytweet.transform.CrmTransformer"/>
+    <_1:transform.java from="java:org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfo" to="{urn:crm:account-service:1.0}getAccountInfo" class="org.jboss.demo.fsw.angrytweet.transform.CrmTransformer"/>
+    <_1:transform.java from="{urn:crm:account-service:1.0}getAccountInfoResponse" to="java:org.jboss.demo.fsw.angrytweet.crm.model.GetAccountInfoResponse" class="org.jboss.demo.fsw.angrytweet.transform.CrmTransformer"/>
+    <_1:transform.java from="java:org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket" to="java:org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketEntity" class="org.jboss.demo.fsw.angrytweet.transform.ServiceTicketTransformer"/>
+    <_1:transform.java from="java:org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket" to="java:org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketErrorEntity" class="org.jboss.demo.fsw.angrytweet.transform.ServiceTicketTransformer"/>
   </sy:transforms>
   <sy:domain>
     <sy:properties/>

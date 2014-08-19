@@ -100,6 +100,17 @@ public class MockSwitchyardServiceTaskHandler implements WorkItemHandler {
         results.put(service, result);
     }
     
+    public boolean verifyServiceNotInvoked(String service) {
+        if (!invocations.containsKey(service)) {
+            return true;
+        }
+        int i = invocations.get(service).size();
+        if (i == 0) {
+            return true;
+        }
+        return false;
+    }
+    
     public boolean verifyServiceInvoked(String service, int numberInvocations) {
         if (!invocations.containsKey(service)) {
             return false;
