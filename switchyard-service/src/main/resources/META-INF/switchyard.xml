@@ -131,7 +131,7 @@
       <sca:interface.java interface="org.jboss.demo.fsw.angrytweet.service.JpaStoreErrorService"/>
       <jpa:binding.jpa name="jpa1">
         <jpa:entityClassName>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketErrorEntity</jpa:entityClassName>
-        <jpa:persistenceUnit>JpaAngryTweet</jpa:persistenceUnit>
+        <jpa:persistenceUnit>JpaAngryTweetError</jpa:persistenceUnit>
         <jpa:transactionManager>#jtaTransactionManager</jpa:transactionManager>
         <jpa:produce/>
       </jpa:binding.jpa>

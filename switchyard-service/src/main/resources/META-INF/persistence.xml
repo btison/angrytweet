@@ -8,6 +8,23 @@
 
       <jta-data-source>java:jboss/datasources/AngryTweetDS</jta-data-source>
       <class>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketEntity</class>
+      <exclude-unlisted-classes>true</exclude-unlisted-classes>
+      <properties>
+         <!-- Properties for Hibernate -->
+         <property name="hibernate.hbm2ddl.auto" value="update" />
+         <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> -->
+         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>         
+         <!-- Uncomment to print SQL statements executed by Hibernate
+         <property name="hibernate.show_sql" value="true" />
+         -->
+         <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+         <property name="hibernate.id.new_generator_mappings" value="false" />
+      </properties>
+   </persistence-unit>
+   
+   <persistence-unit name="JpaAngryTweetError">
+
+      <jta-data-source>java:jboss/datasources/AngryTweetDS</jta-data-source>
       <class>org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicketErrorEntity</class>
       <exclude-unlisted-classes>true</exclude-unlisted-classes>
       <properties>
