@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class RoutedTicketEventGenerator extends EventProcessor {
     
-    private static final Logger LOG = LoggerFactory.getLogger(CEPDroolsEventProcessor.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(RoutedTicketEventGenerator.class.getName());
 
     @SuppressWarnings("unchecked")
     @Override
