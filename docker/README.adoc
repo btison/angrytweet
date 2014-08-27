@@ -1,0 +1,74 @@
+:numbered!:
+
+== Angrytweet Docker images
+
+Docker images that provides containers for the Angrytweet demo application. The Docker images are based upon the `mattdm/fedora:f20` image, and have been tested on fedora 20 with docker.io 1.1.2. 
+
+The Angrytweet demo is deployed on 3 containers:
+
+* mysql : MySQL DB container for the AngryTweet aplication, FSW and RTGov
+* rtgov : FSW RTGov server
+* fsw : FSW server 
+
+The images use FSW 6.0.0.GA
+
+=== Prerequisites:
+
+* FSW image:
+** FSW installer (jboss-fsw-installer-6.0.0.GA-redhat-4.jar) in `resources` directory.
+** AngryTweet ear archive (switchyard-angrytweet.ear) in `resources` directory
+** AngryTweet CRM Service war (crm-service.war) in `resources` directory
+** AngryTweet RTGov IP war (angrytweet-ip.war) in `resources` directory
+** AngryTweet CRM configuration file (crm.properties) in`resources` directory
+** Camel Twitter component jar (camel-twitter-2.10.0.redhat-60024-1.jar) in `resources/modules/camel-twitter` directory
+** Twitter4J jars (twitter4j-core-3.0.5.jar, twitter4j-stream-3.0.5.jar) in `resources/modules/twitter4j` directory
+
+* RTGov image:
+** FSW installer (jboss-fsw-installer-6.0.0.GA-redhat-4.jar) in `resources` directory.
+** Missing modules in `resources/modules` directory. + 
+When installing only RTGov server, some modules are not installed. Copy the following modules from the `$JBOSS_HOME/modules/system/layers/soa` directory of an existing FSW installation into the resources/modules directory
+*** `com/google/protobuf`
+*** `com/thoughtworks/xstream`
+*** `org/antlr/antlr-runtime`
+*** `org/apache/poi`
+*** `org/jboss/hibernate/custom-dialect-resolvers/hibernate-dialect-resolvers`
+*** `org/mvel`
+*** `org/mvel/mvel2`
+*** Angrytweet EPN war (angrytweet-epn-situation.war) in `resources` directory.
+
+=== Build the images
+
+----
+# docker build -t angrytweet/mysql docker/mysql
+# docker build -t angrytweet/rtgov docker/rtgov
+# docker build -t angrytweet/fsw docker/fsw
+----
+
+=== Start the containers
+
+An easy way to run the images is to use the Fig orchestration tool (http://www.fig.sh). Install the tool on you docker host.
+
+Copy the `fig.yml.sample` file to `fig.yml`.
+
+Provide adequate values for the several environment variables in `fig.yml`.
+
+Start the containers:
+
+----
+# cd docker
+# fig up -d
+----
+
+=== Accessing the containers
+
+The containers do not run a ssh daemon. To get into the containers, use `nsenter` (http://blog.docker.com/2014/06/why-you-dont-need-to-run-sshd-in-docker/).
+
+For example:
+
+----
+# FSW_PID=$(docker inspect --format '{{ .State.Pid }}' fsw)
+# nsenter -m -u -n -i -p -t $FSW_PID
+----
+
+This will give you a root prompt in the `fsw` container.
+
