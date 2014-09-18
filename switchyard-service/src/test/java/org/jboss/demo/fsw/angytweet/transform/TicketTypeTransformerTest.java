@@ -4,6 +4,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.jboss.demo.fsw.angrytweet.model.ProviderServiceTicket;
+import org.jboss.demo.fsw.angrytweet.transform.TicketTypeTransformer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.w3c.dom.Document;

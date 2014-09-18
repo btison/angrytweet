@@ -1,4 +1,4 @@
-package org.jboss.demo.fsw.angytweet.transform;
+package org.jboss.demo.fsw.angrytweet.transform;
 
 import javax.inject.Named;
 
