@@ -1,0 +1,29 @@
+{
+  "id": "angrytweetrtgov",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "angrytweetrtgov",
+      "containers": [
+	{
+	"name": "rtgov",
+	"image": "localhost:5000/angrytweet/rtgov",
+	"ports": [
+		{
+	  	"containerPort": 18080,
+	  	"hostPort": 4080
+		},
+		{
+	  	"containerPort": 19990,
+	  	"hostPort": 19990
+		}]
+	}
+      ]
+    }
+  },
+  "labels": {
+    "name": "angrytweetrtgov"
+  }
+}

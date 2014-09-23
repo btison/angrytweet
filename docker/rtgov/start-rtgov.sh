@@ -7,8 +7,8 @@ IPADDR=$(ip a s | sed -ne '/127.0.0.1/!{s/^[ \t]*inet[ \t]*\([0-9.]\+\)\/.*$/\1/
 
 echo "IPADDR = $IPADDR"
 
-MYSQL_HOST_IP=$MYSQL_PORT_3306_TCP_ADDR
-MYSQL_HOST_PORT=$MYSQL_PORT_3306_TCP_PORT
+MYSQL_HOST_IP=$SERVICE_HOST
+MYSQL_HOST_PORT=$ANGRYTWEETDB_SERVICE_PORT
 
 echo "MySQL host = $MYSQL_HOST_IP"
 echo "MySQL port = $MYSQL_HOST_PORT"
@@ -44,6 +44,6 @@ fi
 
 # Start rtgov
 su jboss <<EOF
-nohup ${SERVER_INSTALL_DIR}/${SERVER_NAME}/bin/standalone.sh -Djboss.bind.address=$IPADDR -Djboss.bind.address.management=$IPADDR -Djboss.bind.address.insecure=$IPADDR -Djboss.node.name=server-$IPADDR -Dmysql.host.ip=$MYSQL_HOST_IP -Dmysql.host.port=$MYSQL_HOST_PORT --server-config=$JBOSS_CONFIG $ADMIN_ONLY $SERVER_OPTS 0<&- &>/dev/null &
+nohup ${SERVER_INSTALL_DIR}/${SERVER_NAME}/bin/standalone.sh -Djboss.socket.binding.port-offset=10000 -Djboss.bind.address=$IPADDR -Djboss.bind.address.management=$IPADDR -Djboss.bind.address.insecure=$IPADDR -Djboss.node.name=server-$IPADDR -Dmysql.host.ip=$MYSQL_HOST_IP -Dmysql.host.port=$MYSQL_HOST_PORT --server-config=$JBOSS_CONFIG $ADMIN_ONLY $SERVER_OPTS 0<&- &>/dev/null &
 EOF
 echo "RTGov started"

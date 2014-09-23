@@ -7,7 +7,8 @@ supervisord
 
 __run_script() {
 echo "Running scripts"
-echo MYSQL_HOST=${DB_PORT_3306_TCP_ADDR} >> /env.sh
+#echo MYSQL_HOST=${DB_PORT_3306_TCP_ADDR} >> /env.sh
+echo MYSQL_HOST=${SERVICE_HOST} >> /env.sh
 }
 
 # Call all functions

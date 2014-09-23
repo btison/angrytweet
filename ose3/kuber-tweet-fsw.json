@@ -1,0 +1,29 @@
+{
+  "id": "angrytweetfsw",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "angrytweetfsw",
+      "containers": [
+	{
+	"name": "fsw",
+	"image": "localhost:5000/angrytweet/fsw",
+	"ports": [
+		{
+	  	"containerPort": 8080,
+	  	"hostPort": 7080
+		},
+		{
+	  	"containerPort": 9990,
+	  	"hostPort": 9990
+		}]
+	}
+      ]
+    }
+  },
+  "labels": {
+    "name": "angrytweetfsw"
+  }
+}

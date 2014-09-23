@@ -1,4 +1,5 @@
 FROM mattdm/fedora:f20
+# FROM rhel7
 
 # Perform updates
 RUN yum -y update; yum clean all
