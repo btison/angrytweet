@@ -43,8 +43,8 @@ RUN /install-rtgov.sh
 # Deploy Angrytweet application
 RUN /deploy-angrytweet.sh
 
-# Expose ports 8080,9990,9999
-EXPOSE 8080 9990 9999
+# Expose ports 18080,19990,19999
+EXPOSE 18080 19990 19999
 
 # Entrypoint
 ENTRYPOINT ["/bin/bash", "/start-container.sh"]

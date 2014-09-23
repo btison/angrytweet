@@ -7,8 +7,21 @@ IPADDR=$(ip a s | sed -ne '/127.0.0.1/!{s/^[ \t]*inet[ \t]*\([0-9.]\+\)\/.*$/\1/
 
 echo "IPADDR = $IPADDR"
 
-MYSQL_HOST_IP=$MYSQL_PORT_3306_TCP_ADDR
-MYSQL_HOST_PORT=$MYSQL_PORT_3306_TCP_PORT
+#MYSQL_HOST_IP=$ANGRYTWEETDB_PORT_3306_TCP_ADDR
+#MYSQL_HOST_PORT=$ANGRYTWEETDB_SERVICE_PORT
+
+MYSQL_HOST_IP=$SERVICE_HOST
+MYSQL_HOST_PORT=$ANGRYTWEETDB_SERVICE_PORT
+
+ANGRYTWEET_CONSUMERKEY=replace 
+ANGRYTWEET_CONSUMERSECRET=replace 
+ANGRYTWEET_ACCESSTOKEN=replace 
+ANGRYTWEET_CONSUMERSECRET=replace 
+ANGRYTWEET_EMAIL_USERNAME=replace 
+ANGRYTWEET_EMAIL_PASSWORD=replace 
+ANGRYTWEET_EMAIL_HOST="smtps://smtp.gmail.com:465" 
+
+
 
 echo "MySQL host = $MYSQL_HOST_IP"
 echo "MySQL port = $MYSQL_HOST_PORT"
@@ -45,5 +58,9 @@ fi
 # start fsw
 su jboss <<EOF
 nohup ${SERVER_INSTALL_DIR}/${SERVER_NAME}/bin/standalone.sh -Djboss.bind.address=$IPADDR -Djboss.bind.address.management=$IPADDR -Djboss.bind.address.insecure=$IPADDR -Djboss.node.name=server-$IPADDR -Dmysql.host.ip=$MYSQL_HOST_IP -Dmysql.host.port=$MYSQL_HOST_PORT -DconsumerKey=$ANGRYTWEET_CONSUMERKEY -DconsumerSecret=$ANGRYTWEET_CONSUMERSECRET -DaccessToken=$ANGRYTWEET_ACCESSTOKEN -DaccessTokenSecret=$ANGRYTWEET_ACCESSTOKENSECRET -DsinceId=$ANGRYTWEET_SINCEID -DcsvInputDir=$ANGRYTWEET_CSVINPUTDIR -Demail.server.username=$ANGRYTWEET_EMAIL_USERNAME -Demail.server.password=$ANGRYTWEET_EMAIL_PASSWORD -Demail.server.host=$ANGRYTWEET_EMAIL_HOST -Dcrm.host=$IPADDR -Dcrm.port=8080 --server-config=$JBOSS_CONFIG $ADMIN_ONLY $SERVER_OPTS 0<&- &>/dev/null &
+
+
+
+
 EOF
 echo "FSW started"
