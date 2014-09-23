@@ -2,9 +2,7 @@
 
 == kubertweet Kubernates configuguration for OSE 3
 
-This demo extend the usage of the docker images, provided in kubertweet/docker, to OpenShift V3. 
-
-For this first run I will be using OpenShift v3 from .... 
+This demo extend the usage of the docker images, provided in kubertweet/docker, to OpenShift V3. Using the upstream version of OpenShift
 
 === Instructions on the top of RHEL7
 
