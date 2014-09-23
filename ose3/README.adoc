@@ -46,7 +46,8 @@ ANGRYTWEET_EMAIL_USERNAME=replace
 ANGRYTWEET_EMAIL_PASSWORD=replace 
 ANGRYTWEET_EMAIL_HOST="smtps://smtp.gmail.com:465"
 ----
-The build is done using those instructions
+
+The build is done using those instructions (you will need first to provide the adequate files as described in the detailed instructions available in kubertweet/docker). 
 
 ----
 # docker build -t kubertweet/fsw docker/fsw
