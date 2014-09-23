@@ -101,7 +101,7 @@ WAIT for DB, check that it is listeneing on port 3309 and 10000 (proxied by the 
 ----
 
 ==== Accessing the application
-rtGov will be available on http://localhost:4080 for the admin console and on http://localhost:4080/gadget-web for the rtgov console
+rtGov will be available on http://localhost:4080 for the admin console and on http://localhost:4080/gadget-web for the rtgov console.
 
 Fuse Services works will be available on http://localhost:7080
 
