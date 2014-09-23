@@ -1,6 +1,6 @@
 :numbered!:
 
-== kubertweet's running on Kubernetes/OpenShift3
+== kubertweet is a fork of angrytweet running on Kubernetes/OpenShift3
 
 This demo extend the usage of the docker images, provided in kubertweet/docker, to OpenShift V3. 
 For this demo we will be using the upstream version of OpenShift
@@ -102,6 +102,7 @@ WAIT for DB, check that it is listeneing on port 3309 and 10000 (proxied by the 
 
 ==== Accessing the application
 rtGov will be available on http://localhost:4080 for the admin console and on http://localhost:4080/gadget-web for the rtgov console
+
 Fuse Services works will be available on http://localhost:7080
 
 
