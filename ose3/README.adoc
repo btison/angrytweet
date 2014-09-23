@@ -108,6 +108,5 @@ rtGov will be available on http://localhost:4080 for the admin console and on ht
 
 Fuse Services works will be available on http://localhost:7080
 
-test git
 
 
