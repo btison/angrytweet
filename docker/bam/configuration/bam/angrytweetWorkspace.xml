@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceExport>
+  <workspace envelopeId="Default_Envelope" friendlyUrl="AngryClaimShowcase"
+    skinId="Default_Skin" homeMode="0" id="0">
+    <permission principalClass="org.jboss.dashboard.security.principals.RolePrincipal"
+      permissionClass="org.jboss.dashboard.security.WorkspacePermission"
+      readonly="true" principal="role-admin"
+      actions="login,admin,createPage,edit,delete,edit perm,admin providers" />
+    <permission principalClass="org.jboss.dashboard.security.principals.RolePrincipal"
+      permissionClass="org.jboss.dashboard.security.WorkspacePermission"
+      readonly="true" principal="role-analyst"
+      actions="login,admin,createPage,edit,delete,edit perm,admin providers" />
+    <permission principalClass="org.jboss.dashboard.security.principals.RolePrincipal"
+      permissionClass="org.jboss.dashboard.security.PanelPermission"
+      readonly="true" principal="role-admin" actions="view,edit,edit perm" />
+    <permission principalClass="org.jboss.dashboard.security.principals.RolePrincipal"
+      permissionClass="org.jboss.dashboard.security.PanelPermission"
+      readonly="true" principal="role-analyst" actions="view,edit,edit perm" />
+    <permission principalClass="org.jboss.dashboard.security.principals.RolePrincipal"
+      permissionClass="org.jboss.dashboard.security.SectionPermission"
+      readonly="true" principal="role-admin" actions="view,edit,delete,edit perm" />
+    <permission principalClass="org.jboss.dashboard.security.principals.RolePrincipal"
+      permissionClass="org.jboss.dashboard.security.SectionPermission"
+      readonly="true" principal="role-analyst" actions="view,edit,delete,edit perm" />
+    <param name="title" value="Angry Claim showcase" lang="en" />
+    <param name="name" value="AngryClaimShowcase" lang="en" />
+    <panelInstance serialization="" provider="dashboard.kpi"
+      id="2761">
+      <param name="kpicode" value="kpi_29221393347203998" lang=" " />
+      <param name="title" value="Key Performance Indicator" lang="de" />
+      <param name="title" value="ServiceConcerned" lang="en" />
+      <param name="title" value="Indicador clave de rendimiento"
+        lang="es" />
+      <param name="title" value="Key Performance Indicator" lang="fr" />
+      <param name="title" value="Key Performance Indicator" lang="ja" />
+      <param name="title" value="Key Performance Indicator" lang="pt" />
+      <param name="title" value="Key Performance Indicator" lang="zh" />
+    </panelInstance>
+    <panelInstance serialization="" provider="dashboard.kpi"
+      id="2772">
+      <param name="kpicode" value="kpi_29231393347710249" lang=" " />
+      <param name="title" value="Key Performance Indicator" lang="de" />
+      <param name="title" value="Communication Channel" lang="en" />
+      <param name="title" value="Indicador clave de rendimiento"
+        lang="es" />
+      <param name="title" value="Key Performance Indicator" lang="fr" />
+      <param name="title" value="Key Performance Indicator" lang="ja" />
+      <param name="title" value="Key Performance Indicator" lang="pt" />
+      <param name="title" value="Key Performance Indicator" lang="zh" />
+    </panelInstance>
+    <panelInstance
+      serialization="rO0ABXNyABFqYXZhLnV0aWwuSGFzaE1hcAUH2sHDFmDRAwACRgAKbG9hZEZhY3RvckkACXRocmVzaG9sZHhwP0AAAAAAAAN3CAAAAAQAAAADdAAEbGFuZ3NyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAABdwQAAAABdAABKnh0AARwYWdlc3EAfgADAAAAAXcEAAAAAXQABDI3NjB4dAAJd29ya3NwYWNlc3EAfgADAAAAAXcEAAAAAXEAfgAFeHg="
+      provider="navigation.sections_vert" id="2783">
+      <param name="title" value="Page menu vertical" lang="de" />
+      <param name="title" value="AngryClaim Monitoring" lang="en" />
+      <param name="title"
+        value="Men&#195;&#402;&#194;&#186; vertical de p&#195;&#402;&#194;&#161;ginas"
+        lang="es" />
+      <param name="title" value="Page menu vertical" lang="fr" />
+      <param name="title" value="Page menu vertical" lang="ja" />
+      <param name="title" value="Page menu vertical" lang="pt" />
+      <param name="title" value="Page menu vertical" lang="zh" />
+    </panelInstance>
+    <panelInstance
+      serialization="rO0ABXNyABFqYXZhLnV0aWwuSGFzaE1hcAUH2sHDFmDRAwACRgAKbG9hZEZhY3RvckkACXRocmVzaG9sZHhwP0AAAAAAAAB3CAAAAAEAAAABdAAKdmlzaWJsZUlkc3NyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAABdwQAAAAKdAAEMjc2MHh4"
+      provider="navigation.tree_menu" id="2801">
+      <param name="PageTemplate1"
+        value="&lt;div style=&quot;border-top: 1px dotted gray; padding: 6px 10px; color: #33455b; font-size: 14px;&quot;&gt;&lt;a href=&quot;{LINK}&quot;&gt;{PAGE}&lt;/a&gt;&lt;/div&gt; "
+        lang=" " />
+      <param name="PageTemplate2"
+        value="&lt;div style=&quot;border-top: 1px dotted gray; padding: 6px 0px 6px 25px; color: #33455b; font-size: 13px;&quot;&gt;&lt;a href=&quot;{LINK}&quot;&gt;{PAGE}&lt;/a&gt;&lt;/div&gt; "
+        lang=" " />
+      <param name="PageTemplate3"
+        value="&lt;div style=&quot;border-top: 1px dotted gray; padding: 6px 0px 6px 35px; color: #33455b; font-size: 12px;&quot;&gt;&lt;a href=&quot;{LINK}&quot;&gt;&amp;middot; {PAGE}&lt;/a&gt;&lt;/div&gt; "
+        lang=" " />
+      <param name="currentPageTemplate1"
+        value="&lt;div style=&quot;border-top: 1px dotted gray; padding: 6px 10px; color: #33455b; font-size: 14px;&quot;&gt;&lt;b&gt;{PAGE}&lt;/b&gt;&lt;/div&gt; "
+        lang=" " />
+      <param name="currentPageTemplate2"
+        value="&lt;div style=&quot;border-top: 1px dotted gray; padding: 6px 0px 6px 25px; color: #33455b; font-size: 13px;&quot;&gt;&lt;b&gt;{PAGE}&lt;/b&gt;&lt;/div&gt; "
+        lang=" " />
+      <param name="currentPageTemplate3"
+        value="&lt;div style=&quot;border-top: 1px dotted gray; padding: 6px 0px 6px 35px; color: #33455b; font-size: 12px;&quot;&gt;&lt;b&gt;&amp;middot; {PAGE}&lt;/b&gt;&lt;/div&gt; "
+        lang=" " />
+      <param name="htmlBeforePanel"
+        value="&lt;h1&gt;&lt;strong&gt;Angry_Claim Filters&lt;/strong&gt;&lt;/h1&gt; "
+        lang="en" />
+      <param name="markOppenedSections" value="false" lang=" " />
+      <param name="openAllSections" value="false" lang=" " />
+      <param name="title" value="Tree menu" lang="de" />
+      <param name="title" value="Tree menu" lang="en" />
+      <param name="title"
+        value="Men&#195;&#402;&#194;&#186; en &#195;&#402;&#194;&#161;rbol"
+        lang="es" />
+      <param name="title" value="Tree menu" lang="fr" />
+      <param name="title" value="Tree menu" lang="ja" />
+      <param name="title" value="Tree menu" lang="pt" />
+      <param name="title" value="Tree menu" lang="zh" />
+    </panelInstance>
+    <panelInstance
+      serialization="rO0ABXQEVzxkYXNoYm9hcmRfZmlsdGVyPgogIDxwcm9wZXJ0eSBpZD0iYXJlYV9jb2RlIiBwcm92aWRlckNvZGUgPSJkYXRhcHJvdmlkZXJfNzI4MzEzOTMzNDY5OTgyNjUiPgogICAgPHZpc2libGU+dHJ1ZTwvdmlzaWJsZT4KICA8L3Byb3BlcnR5PgogIDxwcm9wZXJ0eSBpZD0iY2hhbm5lbF9pbiIgcHJvdmlkZXJDb2RlID0iZGF0YXByb3ZpZGVyXzcyODMxMzkzMzQ2OTk4MjY1Ij4KICAgIDx2aXNpYmxlPnRydWU8L3Zpc2libGU+CiAgICA8c2VjdGlvbj4yNzYwPC9zZWN0aW9uPgogIDwvcHJvcGVydHk+CiAgPHByb3BlcnR5IGlkPSJjdXN0b21lciIgcHJvdmlkZXJDb2RlID0iZGF0YXByb3ZpZGVyXzcyODMxMzkzMzQ2OTk4MjY1Ij4KICAgIDx2aXNpYmxlPnRydWU8L3Zpc2libGU+CiAgICA8c2VjdGlvbj4yNzYwPC9zZWN0aW9uPgogIDwvcHJvcGVydHk+CiAgPHByb3BlcnR5IGlkPSJyZXF1ZXN0ZXIiIHByb3ZpZGVyQ29kZSA9ImRhdGFwcm92aWRlcl83MjgzMTM5MzM0Njk5ODI2NSI+CiAgICA8dmlzaWJsZT50cnVlPC92aXNpYmxlPgogICAgPHNlY3Rpb24+Mjc2MDwvc2VjdGlvbj4KICA8L3Byb3BlcnR5PgogIDxwcm9wZXJ0eSBpZD0ic2VydmljZSIgcHJvdmlkZXJDb2RlID0iZGF0YXByb3ZpZGVyXzcyODMxMzkzMzQ2OTk4MjY1Ij4KICAgIDx2aXNpYmxlPnRydWU8L3Zpc2libGU+CiAgICA8c2VjdGlvbj4yNzYwPC9zZWN0aW9uPgogIDwvcHJvcGVydHk+CiAgPG9wdGlvbnM+CiAgICA8c2hvcnRWaWV3TW9kZT50cnVlPC9zaG9ydFZpZXdNb2RlPgogICAgPHNob3dMZWdlbmQ+dHJ1ZTwvc2hvd0xlZ2VuZD4KICAgIDxzaG93UmVmcmVzaEJ1dHRvbj50cnVlPC9zaG93UmVmcmVzaEJ1dHRvbj4KICAgIDxzaG93QXBwbHloQnV0dG9uPnRydWU8L3Nob3dBcHBseWhCdXR0b24+CiAgICA8c2hvd0NsZWFyQnV0dG9uPnRydWU8L3Nob3dDbGVhckJ1dHRvbj4KICAgIDxzaG93UHJvcGVydHlOYW1lcz50cnVlPC9zaG93UHJvcGVydHlOYW1lcz4KICAgIDxzaG93U3VibWl0T25DaGFuZ2U+dHJ1ZTwvc2hvd1N1Ym1pdE9uQ2hhbmdlPgogIDxzaG93QXV0b1JlZnJlc2g+dHJ1ZTwvc2hvd0F1dG9SZWZyZXNoPgogIDwvb3B0aW9ucz4KPC9kYXNoYm9hcmRfZmlsdGVyPgo="
+      provider="dashboard.filter" id="2829">
+      <param name="title" value="Filter &amp; Drill-down" lang="de" />
+      <param name="title" value="Filter &amp; Drill-down" lang="en" />
+      <param name="title" value="Filtro y Drill-down" lang="es" />
+      <param name="title" value="Filter &amp; Drill-down" lang="fr" />
+      <param name="title" value="Filter &amp; Drill-down" lang="ja" />
+      <param name="title" value="Filter &amp; Drill-down" lang="pt" />
+      <param name="title" value="Filter &amp; Drill-down" lang="zh" />
+    </panelInstance>
+    <panelInstance serialization="" provider="dashboard.kpi"
+      id="2932">
+      <param name="kpicode" value="kpi_29241393347897004" lang=" " />
+      <param name="title" value="Key Performance Indicator" lang="de" />
+      <param name="title" value="ChannelUsed &gt; 1" lang="en" />
+      <param name="title" value="Indicador clave de rendimiento"
+        lang="es" />
+      <param name="title" value="Key Performance Indicator" lang="fr" />
+      <param name="title" value="Key Performance Indicator" lang="ja" />
+      <param name="title" value="Key Performance Indicator" lang="pt" />
+      <param name="title" value="Key Performance Indicator" lang="zh" />
+    </panelInstance>
+    <panelInstance
+      serialization="rO0ABXQCiTxkYXNoYm9hcmRfZmlsdGVyPgogIDxwcm9wZXJ0eSBpZD0iY2hhbm5lbF9pbiIgcHJvdmlkZXJDb2RlID0iZGF0YXByb3ZpZGVyXzcyODMxMzkzMzQ2OTk4MjY1Ij4KICAgIDx2aXNpYmxlPnRydWU8L3Zpc2libGU+CiAgPC9wcm9wZXJ0eT4KICA8cHJvcGVydHkgaWQ9InNlcnZpY2UiIHByb3ZpZGVyQ29kZSA9ImRhdGFwcm92aWRlcl83MjgzMTM5MzM0Njk5ODI2NSI+CiAgICA8dmlzaWJsZT50cnVlPC92aXNpYmxlPgogIDwvcHJvcGVydHk+CiAgPG9wdGlvbnM+CiAgICA8c2hvcnRWaWV3TW9kZT50cnVlPC9zaG9ydFZpZXdNb2RlPgogICAgPHNob3dMZWdlbmQ+dHJ1ZTwvc2hvd0xlZ2VuZD4KICAgIDxzaG93UmVmcmVzaEJ1dHRvbj50cnVlPC9zaG93UmVmcmVzaEJ1dHRvbj4KICAgIDxzaG93QXBwbHloQnV0dG9uPnRydWU8L3Nob3dBcHBseWhCdXR0b24+CiAgICA8c2hvd0NsZWFyQnV0dG9uPnRydWU8L3Nob3dDbGVhckJ1dHRvbj4KICAgIDxzaG93UHJvcGVydHlOYW1lcz50cnVlPC9zaG93UHJvcGVydHlOYW1lcz4KICAgIDxzaG93U3VibWl0T25DaGFuZ2U+dHJ1ZTwvc2hvd1N1Ym1pdE9uQ2hhbmdlPgogIDxzaG93QXV0b1JlZnJlc2g+dHJ1ZTwvc2hvd0F1dG9SZWZyZXNoPgogIDwvb3B0aW9ucz4KPC9kYXNoYm9hcmRfZmlsdGVyPgo="
+      provider="dashboard.filter" id="2925">
+      <param name="title" value="Filter &amp; Drill-down" lang="de" />
+      <param name="title" value="Filter &amp; Drill-down" lang="en" />
+      <param name="title" value="Filtro y Drill-down" lang="es" />
+      <param name="title" value="Filter &amp; Drill-down" lang="fr" />
+      <param name="title" value="Filter &amp; Drill-down" lang="ja" />
+      <param name="title" value="Filter &amp; Drill-down" lang="pt" />
+      <param name="title" value="Filter &amp; Drill-down" lang="zh" />
+    </panelInstance>
+    <section id="2760" visible="true" panelSpacing="2" position="0"
+      regionSpacing="2" idEnvelope="" idSkin="" friendlyUrl="AngryClaimPage"
+      idTemplate="Default_Layout">
+      <param name="title" value="AngryClaimPage" lang="en" />
+      <panel position="0" instanceId="2783" regionId="center_1"
+        id="2791" />
+      <panel position="0" instanceId="2761" regionId="center_2"
+        id="2769" />
+      <panel position="1" instanceId="2772" regionId="center_2"
+        id="2780" />
+      <panel position="0" instanceId="2932" regionId="center_3"
+        id="2940" />
+      <panel position="0" instanceId="2801" regionId="left_top"
+        id="2847" />
+      <panel position="1" instanceId="2925" regionId="left_top"
+        id="2933" />
+    </section>
+  </workspace>
+</workspaceExport>

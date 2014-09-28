@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kpis>
+  <dataprovider code="dataprovider_72831393346998265" type="sql">
+    <description language="en">AngryClaimTickets</description>
+    <sqlprovider>
+      <datasource>AngryClaimDB</datasource>
+      <query type="default">select * from ticket order by channel_in</query>
+      <query type="mysql">select * from ticket order by channel_in</query>
+    </sqlprovider>
+    <dataproperties>
+      <dataproperty id="id">
+        <domain>org.jboss.dashboard.domain.numeric.NumericDomain</domain>
+        <name language="fr">id</name>
+        <name language="zh">id</name>
+        <name language="ja">id</name>
+        <name language="en">id</name>
+        <name language="es">id</name>
+        <name language="de">id</name>
+        <name language="pt">id</name>
+      </dataproperty>
+      <dataproperty id="area_code">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+        <name language="fr">area_code</name>
+        <name language="zh">area_code</name>
+        <name language="ja">area_code</name>
+        <name language="en">area_code</name>
+        <name language="es">area_code</name>
+        <name language="de">area_code</name>
+        <name language="pt">area_code</name>
+      </dataproperty>
+      <dataproperty id="channel_in">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+        <name language="fr">channel_in</name>
+        <name language="zh">channel_in</name>
+        <name language="ja">channel_in</name>
+        <name language="en">channel_in</name>
+        <name language="es">channel_in</name>
+        <name language="de">channel_in</name>
+        <name language="pt">channel_in</name>
+      </dataproperty>
+      <dataproperty id="comments">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+        <name language="fr">comments</name>
+        <name language="zh">comments</name>
+        <name language="ja">comments</name>
+        <name language="en">comments</name>
+        <name language="es">comments</name>
+        <name language="de">comments</name>
+        <name language="pt">comments</name>
+      </dataproperty>
+      <dataproperty id="customer">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+        <name language="fr">customer</name>
+        <name language="zh">customer</name>
+        <name language="ja">customer</name>
+        <name language="en">customer</name>
+        <name language="es">customer</name>
+        <name language="de">customer</name>
+        <name language="pt">customer</name>
+      </dataproperty>
+      <dataproperty id="external_id">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+        <name language="fr">external_id</name>
+        <name language="zh">external_id</name>
+        <name language="ja">external_id</name>
+        <name language="en">external_id</name>
+        <name language="es">external_id</name>
+        <name language="de">external_id</name>
+        <name language="pt">external_id</name>
+      </dataproperty>
+      <dataproperty id="requester">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+        <name language="fr">requester</name>
+        <name language="zh">requester</name>
+        <name language="ja">requester</name>
+        <name language="en">requester</name>
+        <name language="es">requester</name>
+        <name language="de">requester</name>
+        <name language="pt">requester</name>
+      </dataproperty>
+      <dataproperty id="service">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+        <name language="fr">service</name>
+        <name language="zh">service</name>
+        <name language="ja">service</name>
+        <name language="en">service</name>
+        <name language="es">service</name>
+        <name language="de">service</name>
+        <name language="pt">service</name>
+      </dataproperty>
+      <dataproperty id="submitted">
+        <domain>org.jboss.dashboard.domain.date.DateDomain</domain>
+        <name language="fr">submitted</name>
+        <name language="zh">submitted</name>
+        <name language="ja">submitted</name>
+        <name language="en">submitted</name>
+        <name language="es">submitted</name>
+        <name language="de">submitted</name>
+        <name language="pt">submitted</name>
+      </dataproperty>
+      <dataproperty id="urgent">
+        <domain>org.jboss.dashboard.domain.numeric.NumericDomain</domain>
+        <name language="fr">urgent</name>
+        <name language="zh">urgent</name>
+        <name language="ja">urgent</name>
+        <name language="en">urgent</name>
+        <name language="es">urgent</name>
+        <name language="de">urgent</name>
+        <name language="pt">urgent</name>
+      </dataproperty>
+    </dataproperties>
+  </dataprovider>
+  <dataprovider code="dataprovider_57271393347040221" type="sql">
+    <description language="en">AngryClaimVeryAngryUsers</description>
+    <sqlprovider>
+      <datasource>AngryClaimDB</datasource>
+      <query type="default">select customer, area_code,compteur from(  select customer, area_code, count(*) as compteur  from (select customer,area_code, urgent  from ( select customer, channel_in, area_code, urgent from  angrytweet.ticket group by customer,channel_in order by customer, channel_in) AS T) as T2  group by customer) as T3 where compteur&gt;1;</query>
+      <query type="mysql">select customer, area_code,compteur from(  select customer, area_code, count(*) as compteur  from (select customer,area_code, urgent  from ( select customer, channel_in, area_code, urgent from  angrytweet.ticket group by customer,channel_in order by customer, channel_in) AS T) as T2  group by customer) as T3 where compteur&gt;1;</query>
+    </sqlprovider>
+    <dataproperties>
+      <dataproperty id="customer">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+      </dataproperty>
+      <dataproperty id="area_code">
+        <domain>org.jboss.dashboard.domain.label.LabelDomain</domain>
+      </dataproperty>
+      <dataproperty id="compteur">
+        <domain>org.jboss.dashboard.domain.numeric.NumericDomain</domain>
+      </dataproperty>
+    </dataproperties>
+  </dataprovider>
+  <kpi code="kpi_29241393347897004">
+    <description language="de">- Neue Kennziffer -</description>
+    <description language="zh">- ???? -</description>
+    <description language="pt">- Novo indicador -</description>
+    <description language="fr">- Nouvel indicateur -</description>
+    <description language="en">ChannelUsed &gt; 1</description>
+    <description language="es">- Nuevo indicador - </description>
+    <description language="ja">- ????? -</description>
+    <provider code="dataprovider_57271393347040221" />
+    <displayer type="table" renderer="default">
+      <rowsperpage>10</rowsperpage>
+      <headerposition>top</headerposition>
+      <htmlstyle>border: 1px solid #000000; padding:0; text-align:center;</htmlstyle>
+      <htmlclass>skn-table_border</htmlclass>
+      <rowevenclass>skn-even_row</rowevenclass>
+      <rowoddclass>skn-odd_row</rowoddclass>
+      <rowhoverclass>skn-even_row_alt</rowhoverclass>
+      <column>
+        <modelproperty>customer</modelproperty>
+        <viewindex>0</viewindex>
+        <headerhtmlstyle>text-align:center; width:100px; overflow:hidden; background-color:#C6D8EB; height:20px; color:#465F7D; font-weight:Bold;  white-space:nowrap;</headerhtmlstyle>
+        <cellhtmlstyle>width:100px; height:20px;  white-space:nowrap;</cellhtmlstyle>
+        <htmlvalue>{value}</htmlvalue>
+        <selectable>false</selectable>
+        <sortable>true</sortable>
+      </column>
+      <column>
+        <modelproperty>area_code</modelproperty>
+        <viewindex>1</viewindex>
+        <headerhtmlstyle>text-align:center; width:100px; overflow:hidden; background-color:#C6D8EB; height:20px; color:#465F7D; font-weight:Bold;  white-space:nowrap;</headerhtmlstyle>
+        <cellhtmlstyle>width:100px; height:20px;  white-space:nowrap;</cellhtmlstyle>
+        <htmlvalue>{value}</htmlvalue>
+        <selectable>false</selectable>
+        <sortable>true</sortable>
+      </column>
+      <column>
+        <modelproperty>compteur</modelproperty>
+        <viewindex>2</viewindex>
+        <headerhtmlstyle>text-align:center; width:100px; overflow:hidden; background-color:#C6D8EB; height:20px; color:#465F7D; font-weight:Bold;  white-space:nowrap;</headerhtmlstyle>
+        <cellhtmlstyle>width:100px; height:20px;  white-space:nowrap;</cellhtmlstyle>
+        <htmlvalue>{value}</htmlvalue>
+        <selectable>false</selectable>
+        <sortable>true</sortable>
+      </column>
+    </displayer>
+  </kpi>
+  <kpi code="kpi_29231393347710249">
+    <description language="de">- Neue Kennziffer -</description>
+    <description language="zh">- ???? -</description>
+    <description language="pt">- Novo indicador -</description>
+    <description language="fr">- Nouvel indicateur -</description>
+    <description language="en">Communication Channel</description>
+    <description language="es">- Nuevo indicador - </description>
+    <description language="ja">- ????? -</description>
+    <provider code="dataprovider_72831393346998265" />
+    <displayer type="barchart" renderer="nvd3">
+      <domain>
+        <propertyid>channel_in</propertyid>
+        <name language="fr">channel_in</name>
+        <name language="zh">channel_in</name>
+        <name language="ja">channel_in</name>
+        <name language="en">channel_in</name>
+        <name language="es">channel_in</name>
+        <name language="de">channel_in</name>
+        <name language="pt">channel_in</name>
+        <maxnumberofintervals>10</maxnumberofintervals>
+      </domain>
+      <range>
+        <propertyid>submitted</propertyid>
+        <name language="fr">submitted</name>
+        <name language="zh">submitted</name>
+        <name language="ja">submitted</name>
+        <name language="en">submitted</name>
+        <name language="es">submitted</name>
+        <name language="de">submitted</name>
+        <name language="pt">submitted</name>
+        <scalarfunction>count</scalarfunction>
+      </range>
+      <type></type>
+      <showlabelsxaxis>true</showlabelsxaxis>
+      <labelanglexaxis>-45</labelanglexaxis>
+      <showlinesarea>false</showlinesarea>
+      <color>#FFFFFF</color>
+      <backgroundcolor>#FFFFFF</backgroundcolor>
+      <width>600</width>
+      <height>200</height>
+      <showlegend>false</showlegend>
+      <axisinteger>true</axisinteger>
+      <legendanchor>south</legendanchor>
+      <showtitle>true</showtitle>
+      <align>center</align>
+      <marginleft>30</marginleft>
+      <marginright>30</marginright>
+      <margintop>30</margintop>
+      <marginbottom>30</marginbottom>
+    </displayer>
+  </kpi>
+  <kpi code="kpi_29221393347203998">
+    <description language="de">- Neue Kennziffer -</description>
+    <description language="zh">- ???? -</description>
+    <description language="pt">- Novo indicador -</description>
+    <description language="fr">- Nouvel indicateur -</description>
+    <description language="en">ServiceConcerned</description>
+    <description language="es">- Nuevo indicador - </description>
+    <description language="ja">- ????? -</description>
+    <provider code="dataprovider_72831393346998265" />
+    <displayer type="piechart" renderer="nvd3">
+      <domain>
+        <propertyid>service</propertyid>
+        <name language="fr">service</name>
+        <name language="zh">service</name>
+        <name language="ja">service</name>
+        <name language="en">service</name>
+        <name language="es">service</name>
+        <name language="de">service</name>
+        <name language="pt">service</name>
+        <maxnumberofintervals>10</maxnumberofintervals>
+      </domain>
+      <range>
+        <propertyid>channel_in</propertyid>
+        <name language="fr">channel_in</name>
+        <name language="zh">channel_in</name>
+        <name language="ja">channel_in</name>
+        <name language="en">channel_in</name>
+        <name language="es">channel_in</name>
+        <name language="de">channel_in</name>
+        <name language="pt">channel_in</name>
+        <scalarfunction>count</scalarfunction>
+      </range>
+      <type></type>
+      <intervalsortcriteria>0</intervalsortcriteria>
+      <intervalsortorder>1</intervalsortorder>
+      <showlabelsxaxis>true</showlabelsxaxis>
+      <color>#FFFFFF</color>
+      <backgroundcolor>#FFFFFF</backgroundcolor>
+      <width>200</width>
+      <height>200</height>
+      <showlegend>false</showlegend>
+      <axisinteger>true</axisinteger>
+      <legendanchor>south</legendanchor>
+      <showtitle>true</showtitle>
+      <align>center</align>
+      <marginleft>20</marginleft>
+      <marginright>20</marginright>
+      <margintop>30</margintop>
+      <marginbottom>20</marginbottom>
+    </displayer>
+  </kpi>
+</kpis>

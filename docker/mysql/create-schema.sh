@@ -5,8 +5,10 @@ sleep 10s
 mysql -u root -e "GRANT ALL ON *.* TO 'jboss'@'localhost' IDENTIFIED BY 'jboss';"
 mysql -u root -e "GRANT ALL ON *.* TO 'jboss'@'%' IDENTIFIED BY 'jboss';"
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS fsw"
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS rtgov"  
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS rtgov"
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS bpms"  
 
+# FSW,RTGOV
 mysql -u root fsw < /sql/safe-guard-procedures.MySQL5InnoDBDialect.sql
 mysql -u root fsw < /sql/hibernate_sequence.MySQL5InnoDBDialect.sql
 mysql -u root fsw < /sql/riftsaw-dao-jpa-hibernate.ode-unit-test-embedded.MySQL5InnoDBDialect.sql
@@ -24,3 +26,5 @@ mysql -u root rtgov < /sql/import_rtgov.MySQL5InnoDBDialect.sql
 mysql -u root rtgov < /sql/rtgov.MySQL5InnoDBDialect.sql
 
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS angrytweet"
+
+mysql -u root angrytweet < /sql/angrytweet-ticket.sql
