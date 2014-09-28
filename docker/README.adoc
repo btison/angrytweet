@@ -4,13 +4,14 @@
 
 Docker images that provides containers for the Angrytweet demo application. The Docker images are based upon the `mattdm/fedora:f20` image, and have been tested on fedora 20 with docker.io 1.1.2. 
 
-The Angrytweet demo is deployed on 3 containers:
+The Angrytweet demo is deployed on 4 containers:
 
 * mysql : MySQL DB container for the AngryTweet aplication, FSW and RTGov
 * rtgov : FSW RTGov server
 * fsw : FSW server 
+* bam : BAM dashboard server
 
-The images use FSW 6.0.0.GA
+The images use FSW 6.0.0.GA (fsw, rtgov) and BPPMS 6.0.2.GA (bam)
 
 === Prerequisites:
 
@@ -36,12 +37,25 @@ When installing only RTGov server, some modules are not installed. Copy the foll
 *** `org/mvel/mvel2`
 *** Angrytweet EPN war (angrytweet-epn-situation.war) in `resources` directory.
 
+* BAM image
+** JBoss EAP 6.1.1.GA (jboss-eap-6.1.1.zip) in `resources` directory.
+** JBoss BPMS 6.0.2.GA (jboss-bpms-6.0.2.GA-redhat-5-deployable-eap6.x.zip) in `resources` directory.
+** AngryTweet Dashboard Builder jar (angrytweet-dashboard.jar) in `resources` directory.
+
 === Build the images
 
+cd to the `docker` directory and issue the following command
 ----
 # docker build -t angrytweet/mysql docker/mysql
 # docker build -t angrytweet/rtgov docker/rtgov
 # docker build -t angrytweet/fsw docker/fsw
+# docker build -t angrytweet/bam docker/bam
+----
+
+Alternatively, execute the `build.sh` script:
+
+----
+# ./build.sh
 ----
 
 === Start the containers
