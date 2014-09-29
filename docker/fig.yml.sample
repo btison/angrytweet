@@ -23,3 +23,9 @@ fsw:
     - ANGRYTWEET_EMAIL_USERNAME=
     - ANGRYTWEET_EMAIL_PASSWORD=
     - ANGRYTWEET_EMAIL_HOST=
+bam:
+  image: angrytweet/bam
+  links:
+    - mysql:mysql
+  volumes:
+    - /etc/localtime:/etc/localtime
