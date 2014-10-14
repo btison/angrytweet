@@ -9,7 +9,7 @@
   	<switchyard.version>1.1.1-p5-redhat-1</switchyard.version>
   	<jbpm-version>6.0.0-redhat-9</jbpm-version>
     <rtgov.version>1.0.1.Final-redhat-4</rtgov.version>
-    <dashboard.version>6.0.3-redhat-4</dashboard.version>
+    <dashboard.version>6.0.2-redhat-6</dashboard.version>
   </properties>
   <build>
     <pluginManagement>

@@ -15,19 +15,29 @@ The images use FSW 6.0.0.GA (fsw, rtgov) and BPPMS 6.0.2.GA (bam)
 
 === Prerequisites:
 
+* Maven
+If you don't have the Red Hat product Maven repositories at hand, please do copy the content of `etc/settings.xml` into your local Maven `settings.xml` file.
+
+* Build prerequisite files
+In order to build the Docker images, you still have to build the various deployable objects. 
+
+Before being able to build the required artefacts, you will have to update one file manually by copying the provided `etc/modules/camel-twitter/camel-twitter-2.10.0.redhat-60024-1.jar` into a local `<M2_HOME>/repository/org/apache/camel/camel-twitter/2.10.0.redhat-60024-1`.
+
+In order to start the build, please run `mvn clean install` from the root of this repository.
+
 * FSW image:
 ** FSW installer (jboss-fsw-installer-6.0.0.GA-redhat-4.jar) in `resources` directory.
-** AngryTweet ear archive (switchyard-angrytweet.ear) in `resources` directory
-** AngryTweet CRM Service war (crm-service.war) in `resources` directory
-** AngryTweet RTGov IP war (angrytweet-ip.war) in `resources` directory
-** AngryTweet CRM configuration file (crm.properties) in`resources` directory
-** Camel Twitter component jar (camel-twitter-2.10.0.redhat-60024-1.jar) in `resources/modules/camel-twitter` directory
-** Twitter4J jars (twitter4j-core-3.0.5.jar, twitter4j-stream-3.0.5.jar) in `resources/modules/twitter4j` directory
+** AngryTweet ear archive (switchyard-ear/target/switchyard-angrytweet.ear) in `resources` directory
+** AngryTweet CRM Service war (crm-service/target/crm-service.war) in `resources` directory
+** AngryTweet RTGov IP war (rtgov-ip/target/angrytweet-ip.war) in `resources` directory
+** AngryTweet CRM configuration file (etc/crm/crm.properties) in`resources` directory
+** Camel Twitter component jar (etc/modules/camel-twitter/camel-twitter-2.10.0.redhat-60024-1.jar) in `resources/modules/camel-twitter` directory
+** Twitter4J jars (switchyard-ear/target/switchyard-angrytweet/twitter4j-core-3.0.5.jar, switchyard-ear/target/switchyard-angrytweet/twitter4j-stream-3.0.5.jar) in `resources/modules/twitter4j` directory
 
 * RTGov image:
 ** FSW installer (jboss-fsw-installer-6.0.0.GA-redhat-4.jar) in `resources` directory.
 ** Missing modules in `resources/modules` directory. + 
-When installing only RTGov server, some modules are not installed. Copy the following modules from the `$JBOSS_HOME/modules/system/layers/soa` directory of an existing FSW installation into the resources/modules directory
+When installing only RTGov server, some modules are not installed. Copy the following modules from the `$JBOSS_HOME/modules/system/layers/soa` directory of an existing FSW installation into the `resources/modules` directory
 *** `com/google/protobuf`
 *** `com/thoughtworks/xstream`
 *** `org/antlr/antlr-runtime`
@@ -35,21 +45,21 @@ When installing only RTGov server, some modules are not installed. Copy the foll
 *** `org/jboss/hibernate/custom-dialect-resolvers/hibernate-dialect-resolvers`
 *** `org/mvel`
 *** `org/mvel/mvel2`
-*** Angrytweet EPN war (angrytweet-epn-situation.war) in `resources` directory.
+*** Angrytweet EPN war (rtgov-epn-situation/target/angrytweet-epn-situation.war) in `resources` directory.
 
 * BAM image
 ** JBoss EAP 6.1.1.GA (jboss-eap-6.1.1.zip) in `resources` directory.
 ** JBoss BPMS 6.0.2.GA (jboss-bpms-6.0.2.GA-redhat-5-deployable-eap6.x.zip) in `resources` directory.
-** AngryTweet Dashboard Builder jar (angrytweet-dashboard.jar) in `resources` directory.
+** AngryTweet Dashboard Builder jar (dashboard-import/target/angrytweet-dashboard.jar) in `resources` directory.
 
 === Build the images
 
 cd to the `docker` directory and issue the following command
 ----
-# docker build -t angrytweet/mysql docker/mysql
-# docker build -t angrytweet/rtgov docker/rtgov
-# docker build -t angrytweet/fsw docker/fsw
-# docker build -t angrytweet/bam docker/bam
+# docker build -t angrytweet/mysql mysql
+# docker build -t angrytweet/rtgov rtgov
+# docker build -t angrytweet/fsw fsw
+# docker build -t angrytweet/bam bam
 ----
 
 Alternatively, execute the `build.sh` script:
