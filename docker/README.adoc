@@ -15,15 +15,12 @@ The images use FSW 6.0.0.GA (fsw, rtgov) and BPPMS 6.0.2.GA (bam)
 
 === Prerequisites:
 
-* Maven
+* Maven +
 If you don't have the Red Hat product Maven repositories at hand, please do copy the content of `etc/settings.xml` into your local Maven `settings.xml` file.
 
-* Build prerequisite files
-In order to build the Docker images, you still have to build the various deployable objects. 
-
-Before being able to build the required artefacts, you will have to update one file manually by copying the provided `etc/modules/camel-twitter/camel-twitter-2.10.0.redhat-60024-1.jar` into a local `<M2_HOME>/repository/org/apache/camel/camel-twitter/2.10.0.redhat-60024-1`.
-
-In order to start the build, please run `mvn clean install` from the root of this repository.
+* Build prerequisite files +
+In order to build the Docker images, you still have to build the various deployable objects. To be able to do so, you will have to update one file manually by copying the provided `etc/modules/camel-twitter/camel-twitter-2.10.0.redhat-60024-1.jar` into a local `<M2_HOME>/repository/org/apache/camel/camel-twitter/2.10.0.redhat-60024-1`.+
+After doing so, please run `mvn clean install` from the root of this repository.
 
 * FSW image:
 ** FSW installer (jboss-fsw-installer-6.0.0.GA-redhat-4.jar) in `resources` directory.
