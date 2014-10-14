@@ -39,19 +39,19 @@ done
 echo "###########################################"
 echo "Build Angrytweet MySQL container"
 echo "###########################################"
-docker build -t $TAG_REPO/mysql:$TAG_VERSION $SCRIPT_DIR/mysql
+docker build -t $TAG_REPO/mysql:$TAG_VERSION "$SCRIPT_DIR/mysql"
 
 echo "###########################################"
 echo "Build Angrytweet FSW container"
 echo "###########################################"
-docker build -t $TAG_REPO/fsw:$TAG_VERSION $SCRIPT_DIR/fsw
+docker build -t $TAG_REPO/fsw:$TAG_VERSION "$SCRIPT_DIR/fsw"
 
 echo "###########################################"
 echo "Build Angrytweet RTGOV container"
 echo "###########################################"
-docker build -t $TAG_REPO/rtgov:$TAG_VERSION $SCRIPT_DIR/rtgov
+docker build -t $TAG_REPO/rtgov:$TAG_VERSION "$SCRIPT_DIR/rtgov"
 
 echo "###########################################"
 echo "Build Angrytweet BAM container"
 echo "###########################################"
-docker build -t $TAG_REPO/bam:$TAG_VERSION $SCRIPT_DIR/bam
+docker build -t $TAG_REPO/bam:$TAG_VERSION "$SCRIPT_DIR/bam"
