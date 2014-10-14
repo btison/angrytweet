@@ -6,6 +6,8 @@ rtgov:
     - mysql:mysql
   volumes:
     - /etc/localtime:/etc/localtime
+  ports:
+    - "8080"
 fsw:
   image: angrytweet/fsw
   links:
@@ -23,9 +25,13 @@ fsw:
     - ANGRYTWEET_EMAIL_USERNAME=
     - ANGRYTWEET_EMAIL_PASSWORD=
     - ANGRYTWEET_EMAIL_HOST=
+  ports:
+    - "8080"
 bam:
   image: angrytweet/bam
   links:
     - mysql:mysql
   volumes:
     - /etc/localtime:/etc/localtime
+  ports:
+    - "8080"
